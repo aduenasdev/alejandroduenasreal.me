@@ -105,7 +105,7 @@ export const preguntas: { pregunta: string; respuesta: string; fuentes: { texto:
     fuentes: [{ texto: 'ftchart.com', url: 'https://ftchart.com/' }, { texto: 'LinkedIn · experiencia actual', url: 'https://www.linkedin.com/in/aduenasdev' }] },
   { pregunta: '¿Sabe desplegar y operar lo que construye?',
     respuesta: 'Sí. Esta misma web se especifica con OpenSpec, se comprueba en CI y se despliega sola en Cloudflare Pages con vista previa por PR y vuelta atrás; en su trabajo, CI/CD, Docker, Kubernetes y Terraform en AWS, con trazas, evaluación y control del coste.',
-    fuentes: [{ texto: 'GitHub · el repositorio de esta web', url: 'https://github.com/aduenasdev/alejandroduenasreal.me' }] },
+    fuentes: [{ texto: 'Cómo se hace esta web', url: '/como-se-hace/' }, { texto: 'GitHub · el repositorio de esta web', url: 'https://github.com/aduenasdev/alejandroduenasreal.me' }] },
   { pregunta: '¿Diseña y construye el frontend?',
     respuesta: 'Sí, de punta a punta: la web y la aplicación de FTChart, la app Android y la web de Viajando, y esta web. Diseño, componentes, accesibilidad y despliegue.',
     fuentes: [{ texto: 'ftchart.com', url: 'https://ftchart.com/' }, { texto: 'GitHub · aduenasdev', url: 'https://github.com/aduenasdev' }] },

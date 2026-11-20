@@ -1,0 +1,270 @@
+---
+// «Cómo se hace»: el circuito real de la web, con datos del último despliegue inyectados en el build.
+import Base from '../layouts/Base.astro';
+import Encabezado from '../components/Encabezado.astro';
+import Circuito from '../components/Circuito.astro';
+import flujo from '../../.github/workflows/ci-cd.yml?raw';
+
+const repo = 'https://github.com/aduenasdev/alejandroduenasreal.me';
+const commit = import.meta.env.PUBLIC_COMMIT;
+const ejecucion = import.meta.env.PUBLIC_RUN_URL;
+const fechaBuild = new Intl.DateTimeFormat('es-ES', {
+  dateStyle: 'long',
+  timeStyle: 'short',
+  timeZone: 'UTC',
+}).format(new Date()) + ' (UTC)';
+
+const pasos = [
+  {
+    nombre: 'Proponer',
+    agente: 'Lee el repositorio y redacta el cambio de OpenSpec: propuesta, specs y tareas con su comprobación.',
+    yo: 'Decido el alcance y qué se queda fuera.',
+  },
+  {
+    nombre: 'Construir',
+    agente: 'Programa y deja evidencia en cada tarea.',
+    yo: 'Reviso el código y el texto; las cifras y las fuentes las valido yo.',
+  },
+  {
+    nombre: 'Comprobar',
+    agente: 'La CI no se salta: si algo falla, el PR no se puede fusionar.',
+    yo: 'Miro la vista previa en una URL real.',
+  },
+  {
+    nombre: 'Publicar',
+    agente: 'Nunca fusiona.',
+    yo: 'Mi merge es la aprobación y queda registrado en GitHub; el despliegue es automático.',
+  },
+];
+
+const comprobaciones = [
+  { que: 'Tipos', evita: 'errores de TypeScript y props mal pasadas', con: 'astro check' },
+  { que: 'Build', evita: 'páginas rotas, esquemas del blog inválidos y dos notas la misma semana', con: 'astro build + regla del blog' },
+  { que: 'Especificaciones', evita: 'cambios sin spec o con specs mal formadas', con: 'openspec validate --strict' },
+  { que: 'Enlaces', evita: 'enlaces internos rotos', con: 'lychee' },
+];
+
+const nota = [
+  { paso: 'Idea', hace: 'Tipo (Guía, Opinión, Análisis o Caso), tesis y fuentes.', sale: 'una propuesta' },
+  { paso: 'Propuesta', hace: 'Un cambio de OpenSpec con la estructura y las fuentes.', sale: 'el alcance aprobado' },
+  { paso: 'Redacción y verificación', hace: 'Cada cifra con su fuente y cada comando probado.', sale: 'la nota terminada' },
+  { paso: 'Publicación', hace: 'Merge en una semana libre (una nota por semana).', sale: 'la nota publicada' },
+];
+---
+
+<Base
+  titulo="Cómo se hace esta web"
+  descripcion="El circuito real de esta web: especificación con OpenSpec, agentes de IA, comprobaciones en CI, vista previa por PR, despliegue automático y vuelta atrás."
+>
+  <!-- 1. Cabecera y datos del último despliegue -->
+  <section class="contenedor pt-10" aria-labelledby="h-como">
+    <p class="etiqueta">Transparencia</p>
+    <h1 id="h-como" class="mt-3 font-display text-[clamp(40px,5vw,66px)] font-semibold leading-[1.08] tracking-[-.015em]">Cómo se hace esta web</h1>
+    <p class="mt-6 max-w-[62ch] text-[18px] text-tinta-2">
+      Esta web la escribo y la programo con agentes de IA. Pero el circuito es el mismo que montaría en un equipo: nada
+      llega a producción sin especificación, comprobaciones automáticas y mi aprobación. Aquí lo enseño con la propia web
+      como ejemplo.
+    </p>
+
+    <dl class="despliegue mt-10 grid gap-px overflow-hidden rounded-[18px] border border-borde bg-borde sm:grid-cols-2 lg:grid-cols-4">
+      <div class="bg-tarjeta p-5">
+        <dt class="etiqueta">Commit desplegado</dt>
+        <dd class="mt-2 font-display text-[17px] font-semibold">
+          {commit ? <a href={`${repo}/commit/${commit}`} class="underline decoration-senal underline-offset-4 dia:decoration-prod" set:text={commit.slice(0, 7)} /> : 'local'}
+        </dd>
+      </div>
+      <div class="bg-tarjeta p-5">
+        <dt class="etiqueta">Build</dt>
+        <dd class="mt-2 font-display text-[17px] font-semibold">{fechaBuild}</dd>
+      </div>
+      <div class="bg-tarjeta p-5">
+        <dt class="etiqueta">Ejecución de Actions</dt>
+        <dd class="mt-2 font-display text-[17px] font-semibold">
+          {ejecucion ? <a href={ejecucion} class="underline decoration-senal underline-offset-4 dia:decoration-prod">Ver la ejecución ↗</a> : 'local'}
+        </dd>
+      </div>
+      <div class="bg-tarjeta p-5">
+        <dt class="etiqueta">Estado del workflow</dt>
+        <dd class="mt-2.5">
+          <a href={`${repo}/actions/workflows/ci-cd.yml`}>
+            <img src={`${repo}/actions/workflows/ci-cd.yml/badge.svg`} alt="Estado del workflow ci-cd en GitHub Actions" height="20" class="h-5 w-auto" />
+          </a>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- 2. El circuito -->
+  <section class="contenedor pt-24" aria-labelledby="h-circuito">
+    <Encabezado
+      id="h-circuito"
+      etiqueta="El circuito"
+      lineas={['El circuito,', 'de un vistazo.']}
+      texto="De la idea a producción en diez pasos. Los dos en amarillo son míos; el resto lo hacen agentes y máquinas."
+    />
+    <Circuito />
+  </section>
+
+  <!-- 3. Quién decide -->
+  <section class="contenedor pt-24" aria-labelledby="h-decide">
+    <Encabezado id="h-decide" etiqueta="Responsabilidad" lineas={['Cuatro pasos, y quién', 'decide en cada uno.']} />
+    <ol class="mt-12 grid gap-4 md:grid-cols-2">
+      {
+        pasos.map((p, i) => (
+          <li class="tarjeta p-6 md:p-7">
+            <p class="font-display text-[13px] font-bold tracking-[.14em] text-tinta-2">{String(i + 1).padStart(2, '0')}</p>
+            <h3 class="mt-2 font-display text-[22px] font-semibold">{p.nombre}</h3>
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              <div>
+                <p class="etiqueta">El agente</p>
+                <p class="mt-1.5 text-[16px]">{p.agente}</p>
+              </div>
+              <div class="border-t border-borde pt-4 sm:border-l sm:border-t-0 sm:pl-4 sm:pt-0">
+                <p class="etiqueta">Yo</p>
+                <p class="mt-1.5 text-[16px]">{p.yo}</p>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <!-- 4. Comprobaciones -->
+  <section class="contenedor pt-24" aria-labelledby="h-comprobaciones">
+    <Encabezado
+      id="h-comprobaciones"
+      etiqueta="Comprobaciones"
+      lineas={['Lo que comprueba', 'cada PR.']}
+      texto="Si cualquiera falla, la protección de main impide fusionar. Con persona o con agente, igual."
+    />
+    <div class="tarjeta mt-12 overflow-x-auto">
+      <table class="w-full min-w-[620px] text-left text-[16px]">
+        <thead>
+          <tr class="border-b border-borde">
+            <th scope="col" class="etiqueta px-6 py-4">Comprobación</th>
+            <th scope="col" class="etiqueta px-6 py-4">Qué evita</th>
+            <th scope="col" class="etiqueta px-6 py-4">Con qué</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            comprobaciones.map((c) => (
+              <tr class="border-b border-borde last:border-0">
+                <th scope="row" class="px-6 py-4 font-display font-semibold">{c.que}</th>
+                <td class="px-6 py-4 text-tinta-2">{c.evita}</td>
+                <td class="px-6 py-4"><code class="rounded-md bg-fondo-2 px-2 py-0.5 text-[14px]">{c.con}</code></td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5. El despliegue, de verdad -->
+  <section class="contenedor pt-24" aria-labelledby="h-despliegue">
+    <Encabezado
+      id="h-despliegue"
+      etiqueta="El despliegue"
+      lineas={['El despliegue,', 'de verdad.']}
+      texto="Este es el fichero real que publica la web, leído en el build: si cambia, esta página cambia con él."
+    />
+    <figure class="mt-12">
+      <figcaption class="flex items-center justify-between gap-4 rounded-t-[18px] border border-b-0 border-borde bg-fondo-2 px-5 py-3 font-display text-[14px] font-semibold text-tinta-2">
+        <span>.github/workflows/ci-cd.yml</span>
+        <a href={`${repo}/blob/main/.github/workflows/ci-cd.yml`} class="underline underline-offset-4">Ver en GitHub ↗</a>
+      </figcaption>
+      <pre class="max-h-[520px] overflow-auto rounded-b-[18px] border border-borde bg-tarjeta p-5 text-[13.5px] leading-relaxed" tabindex="0" aria-label="Contenido de ci-cd.yml"><code>{flujo}</code></pre>
+    </figure>
+    <ul class="mt-6 grid gap-4 md:grid-cols-3">
+      <li class="tarjeta p-5"><p class="font-display font-semibold">Se compila una vez y se despliega ese mismo artefacto.</p><p class="mt-1.5 text-[15px] text-tinta-2">Lo que se probó es lo que se publica.</p></li>
+      <li class="tarjeta p-5"><p class="font-display font-semibold">Cada PR tiene su vista previa.</p><p class="mt-1.5 text-[15px] text-tinta-2">Una URL real, comentada en el PR.</p></li>
+      <li class="tarjeta p-5"><p class="font-display font-semibold">Producción solo se toca al fusionar en <code>main</code>.</p><p class="mt-1.5 text-[15px] text-tinta-2">Y cada vez queda una release con sus notas.</p></li>
+    </ul>
+  </section>
+
+  <!-- 6. Vuelta atrás -->
+  <section class="contenedor pt-24" aria-labelledby="h-atras">
+    <Encabezado id="h-atras" etiqueta="Vuelta atrás" lineas={['Si algo sale mal.']} />
+    <ol class="mt-12 grid gap-4 md:grid-cols-2">
+      <li class="tarjeta p-6 md:p-7">
+        <p class="etiqueta">Normal</p>
+        <h3 class="mt-2 font-display text-[20px] font-semibold">Revertir el PR</h3>
+        <p class="mt-3 text-tinta-2"><code class="text-tinta">git revert -m 1 &lt;merge&gt;</code> en un PR nuevo. Al fusionarlo, el mismo circuito despliega la versión anterior, con sus comprobaciones.</p>
+      </li>
+      <li class="tarjeta p-6 md:p-7">
+        <p class="etiqueta">Urgente</p>
+        <h3 class="mt-2 font-display text-[20px] font-semibold">Rollback en Cloudflare</h3>
+        <p class="mt-3 text-tinta-2"><em>Workers &amp; Pages → Deployments → Rollback to this deployment</em> sobre el último despliegue bueno. Tarda segundos y no necesita build.</p>
+      </li>
+    </ol>
+    <p class="mt-6 font-display text-[19px] font-semibold">Volver atrás es tan rutinario como desplegar.</p>
+  </section>
+
+  <!-- 7. Cómo nace una nota -->
+  <section class="contenedor pt-24" aria-labelledby="h-nota">
+    <Encabezado
+      id="h-nota"
+      etiqueta="El blog"
+      lineas={['Cómo nace', 'una nota del blog.']}
+      texto="Las notas pasan por el mismo circuito que el código: propuesta, revisión y merge."
+    />
+    <ol class="mt-12 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+      {
+        nota.map((n, i) => (
+          <li class="tarjeta flex flex-col p-5">
+            <p class="font-display text-[13px] font-bold tracking-[.14em] text-tinta-2">{String(i + 1).padStart(2, '0')}</p>
+            <h3 class="mt-2 font-display text-[18px] font-semibold">{n.paso}</h3>
+            <p class="mt-2 text-[15.5px] text-tinta-2">{n.hace}</p>
+            <p class="mt-auto pt-4 text-[15px]"><span class="font-display font-semibold">Sale:</span> {n.sale}</p>
+          </li>
+        ))
+      }
+    </ol>
+    <ul class="mt-6 flex flex-col gap-2 rounded-[18px] border-[1.5px] border-dashed border-borde px-6 py-5 text-[16px] md:flex-row md:flex-wrap md:gap-x-8">
+      <li>◆ Una nota por semana.</li>
+      <li>◆ Cifras con fuente.</li>
+      <li>◆ Nada de datos de clientes ni de empresas.</li>
+      <li>◆ Sin mi merge, no se publica.</li>
+    </ul>
+  </section>
+
+  <!-- 8. Lo que cuesta -->
+  <section class="contenedor pt-24" aria-labelledby="h-coste">
+    <Encabezado id="h-coste" etiqueta="Coste" lineas={['Lo que cuesta.']} texto="0 €, más el dominio." />
+    <div class="tarjeta mt-12 overflow-x-auto">
+      <table class="w-full min-w-[520px] text-left text-[16px]">
+        <thead>
+          <tr class="border-b border-borde">
+            <th scope="col" class="etiqueta px-6 py-4">Servicio</th>
+            <th scope="col" class="etiqueta px-6 py-4">Plan</th>
+            <th scope="col" class="etiqueta px-6 py-4">Coste</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-borde"><th scope="row" class="px-6 py-4 font-display font-semibold">GitHub y Actions</th><td class="px-6 py-4 text-tinta-2">Gratuito con repositorio público</td><td class="px-6 py-4">0 €</td></tr>
+          <tr class="border-b border-borde"><th scope="row" class="px-6 py-4 font-display font-semibold">Cloudflare Pages</th><td class="px-6 py-4 text-tinta-2">Gratuito (Direct Upload)</td><td class="px-6 py-4">0 €</td></tr>
+          <tr class="border-b border-borde"><th scope="row" class="px-6 py-4 font-display font-semibold">Cloudflare DNS</th><td class="px-6 py-4 text-tinta-2">Gratuito</td><td class="px-6 py-4">0 €</td></tr>
+          <tr><th scope="row" class="px-6 py-4 font-display font-semibold">Dominio .me</th><td class="px-6 py-4 text-tinta-2">Registrador</td><td class="px-6 py-4">lo que cobre al año</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 9. Por qué lo cuento -->
+  <section class="contenedor pt-24" aria-labelledby="h-porque">
+    <div class="tarjeta relative overflow-hidden px-6 py-12 md:px-14 md:py-14">
+      <div class="trama pointer-events-none absolute -right-24 -top-24 size-[280px] rounded-full" aria-hidden="true"></div>
+      <div class="relative">
+        <p class="etiqueta">Por qué lo cuento</p>
+        <h2 id="h-porque" class="titulo-seccion max-w-[22ch]">La prueba más pequeña que puedo enseñar entera.</h2>
+        <p class="mt-5 max-w-[56ch] text-tinta-2">
+          Es lo mismo que hago con agentes en producción: especificar, comprobar, desplegar con vuelta atrás y medir. Esta
+          web es la prueba más pequeña que puedo enseñar entera.
+        </p>
+        <p class="mt-8"><a href="/#hablemos" class="pildora pildora-llena">Hablemos →</a></p>
+      </div>
+    </div>
+  </section>
+</Base>

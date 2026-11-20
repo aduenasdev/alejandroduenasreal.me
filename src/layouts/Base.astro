@@ -39,6 +39,7 @@ const menu: { texto: string; href: string }[] = [
 ];
 // «Notas» solo si hay alguna publicada en español
 if ((await publicadas()).length) menu.push({ texto: 'Notas', href: '/blog/' });
+menu.push({ texto: 'Cómo se hace', href: '/como-se-hace/' });
 ---
 
 <!doctype html>
@@ -143,7 +144,8 @@ if ((await publicadas()).length) menu.push({ texto: 'Notas', href: '/blog/' });
         <p class="font-display font-semibold text-tinta">© 2026 {perfil.nombre}</p>
         <div class="flex max-w-[64ch] flex-col gap-2 md:text-right">
           <p>
-            Hecho con Astro y Tailwind. Textos y código escritos con agentes de IA, revisados y aprobados por mí.
+            Hecho con Astro y Tailwind. Textos y código escritos con agentes de IA, revisados y aprobados por mí ·
+            <a href="/como-se-hace/" class="font-semibold text-tinta underline decoration-senal underline-offset-4 dia:decoration-prod">Cómo se hace →</a>
           </p>
           <p class="atribucion">
             <a href={atribucion.url} class="underline decoration-borde underline-offset-4 hover:decoration-senal" rel="noopener">

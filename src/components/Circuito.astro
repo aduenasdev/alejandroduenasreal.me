@@ -1,0 +1,56 @@
+---
+// El circuito de la web, en HTML y CSS: dos filas de cinco en escritorio y una columna en móvil.
+const nodos: { titulo: string; detalle: string; tipo?: 'yo' | 'prod'; enlace?: '⇄' | '→' }[] = [
+  { titulo: 'Alejandro', detalle: 'decide y aprueba', tipo: 'yo', enlace: '⇄' },
+  { titulo: 'Agentes de IA', detalle: 'Claude Code: proponen, especifican, programan y comprueban' },
+  { titulo: 'Repositorio público en GitHub', detalle: 'openspec/ (propuesta · specs · diseño · tareas) y src/ (Astro + Tailwind)' },
+  { titulo: 'Rama feat/* → pull request', detalle: 'un cambio de OpenSpec por PR' },
+  { titulo: 'GitHub Actions', detalle: 'tipos · build · OpenSpec · enlaces' },
+  { titulo: 'Vista previa', detalle: 'Cloudflare Pages, una URL por PR' },
+  { titulo: 'Alejandro revisa y fusiona', detalle: 'su merge es la aprobación', tipo: 'yo' },
+  { titulo: 'GitHub Actions despliega', detalle: 'el mismo artefacto que se comprobó' },
+  { titulo: 'Cloudflare Pages', detalle: 'producción en CDN, con una release y sus notas' },
+  { titulo: 'alejandroduenasreal.me', detalle: 'en producción', tipo: 'prod' },
+];
+// Serpentina en escritorio: la segunda fila va de derecha a izquierda (el 6 queda debajo del 5)
+const colocacion = [
+  '', '', '', '', '',
+  'lg:col-start-5 lg:row-start-2', 'lg:col-start-4 lg:row-start-2', 'lg:col-start-3 lg:row-start-2',
+  'lg:col-start-2 lg:row-start-2', 'lg:col-start-1 lg:row-start-2',
+];
+---
+
+<ol class="circuito mt-10 grid gap-x-8 gap-y-9 lg:grid-cols-5" aria-label="El circuito, paso a paso">
+  {
+    nodos.map((n, i) => (
+      <li
+        class:list={[
+          'nodo relative flex flex-col gap-1.5 rounded-[18px] border p-5',
+          colocacion[i],
+          n.tipo === 'yo' ? 'border-senal bg-senal text-noche' : 'border-borde bg-tarjeta',
+        ]}
+        data-final-fila={(i + 1) % 5 === 0 ? '' : undefined}
+        data-vuelta={i >= 5 ? '' : undefined}
+      >
+        <span class:list={['font-display text-[12px] font-bold tracking-[.14em]', n.tipo !== 'yo' && 'text-tinta-2']}>{String(i + 1).padStart(2, '0')}</span>
+        <span class="flex items-center gap-2 font-display text-[16px] font-semibold leading-snug [overflow-wrap:anywhere]">
+          {n.tipo === 'prod' && <span class="punto-vivo shrink-0" aria-hidden="true" />}
+          {n.titulo}
+        </span>
+        <span class:list={['text-[14px] leading-snug', n.tipo !== 'yo' && 'text-tinta-2']}>{n.detalle}</span>
+        {i < nodos.length - 1 && <span class="flecha font-display text-tinta-3" aria-hidden="true">{n.enlace ?? '→'}</span>}
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  /* Móvil: la flecha va debajo de cada nodo */
+  .flecha { position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%) rotate(90deg); font-size: 18px; }
+  /* Escritorio: a la derecha; al final de la fila, hacia abajo */
+  @media (min-width: 1024px) {
+    .flecha { left: auto; right: -24px; bottom: auto; top: 50%; transform: translateY(-50%); }
+    .nodo[data-final-fila] .flecha { right: 50%; top: auto; bottom: -32px; transform: translateX(50%) rotate(90deg); }
+    .nodo[data-vuelta] .flecha { right: auto; left: -24px; transform: translateY(-50%) rotate(180deg); }
+  }
+</style>
