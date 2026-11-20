@@ -5,7 +5,7 @@ Reglas para cualquier agente de IA (o persona) que trabaje en este repositorio. 
 ## Qué es
 
 Web personal de Alejandro Dueñas Real: diseña y opera agentes de IA en producción (LLMOps y plataforma).
-Astro 6 estático + Tailwind CSS 4, sin backend. Portada en español (`/`), blog bilingüe (`/blog/` y `/en/blog/`) y la
+Astro 6 estático + Tailwind CSS 4, sin backend. Todo en español: portada (`/`), blog (`/blog/`) y la
 página «Cómo se hace» (`/como-se-hace/`), que enseña con datos reales cómo se especifica, comprueba y despliega la web.
 Audiencia: reclutadores y responsables técnicos de equipos de IA y plataforma.
 
@@ -30,6 +30,7 @@ Las specs vigentes están en `openspec/specs/` (`openspec list --specs`). Antes 
 
 ## Reglas de contenido (no negociables)
 
+- **Idioma: español (es-ES) en toda la web, blog incluido.** No se publican versiones en otros idiomas.
 - **Solo hechos comprobables.** No inventes logros, cifras, puestos, testimonios ni certificados. Lo pendiente se
   dice como pendiente.
 - **Empleador actual:** ni el nombre, ni sus productos, ni sus webs, ni sus clientes, ni capturas. Solo «Empresa
@@ -48,10 +49,10 @@ Las specs vigentes están en `openspec/specs/` (`openspec list --specs`). Antes 
 | `src/layouts/Base.astro` | Cabecera, pie (con la atribución), SEO, script e interruptor de tema |
 | `src/styles/global.css` | Tailwind, tokens de noche y día, clases de componente, movimiento reducido e impresión |
 | `src/components/` | Componentes de la portada, del blog y del circuito |
-| `src/pages/` | Rutas: portada, 404, «Cómo se hace», blog en los dos idiomas, RSS y sitemap |
-| `src/content/blog/{es,en}/` | Notas en Markdown (plantilla en `docs/blog/PLANTILLA.md`) |
-| `src/content.config.ts` · `src/blog.ts` | Esquema del blog y sus reglas (una nota por semana ISO e idioma) |
-| `src/i18n.ts` | Textos de la interfaz en español e inglés |
+| `src/pages/` | Rutas: portada, 404, «Cómo se hace», blog, RSS y sitemap |
+| `src/content/blog/` | Notas en Markdown, en español (plantilla en `docs/blog/PLANTILLA.md`) |
+| `src/content.config.ts` · `src/blog.ts` | Esquema del blog y sus reglas (una nota por semana ISO) |
+| `src/i18n.ts` | Textos de la interfaz del blog |
 | `src/assets/` | Retratos opcionales y portadas de las notas |
 | `public/` | Icono, `og.png`, `robots.txt` y `_headers` (cabeceras de Cloudflare Pages) |
 | `scripts/og.html` | Plantilla de la imagen para compartir (1200×630) |
@@ -78,11 +79,11 @@ npm run preview                     # y revisar a mano
 ```
 
 Antes de pedir revisión, en la vista previa:
-- capturas a 390 px y 1440 px, en noche y en día: sin desbordamiento horizontal ni errores de consola (CSP incluida);
+- capturas en móvil (390 px), tableta (768 px) y escritorio (1440 px), en noche y en día: sin desbordamiento horizontal ni errores de consola (CSP incluida);
 - teclado: todo se recorre y el foco se ve; `aria-pressed` correcto en los botones de estado;
 - sin JavaScript se ven los 7 capítulos y todas las respuestas; con movimiento reducido no hay animaciones;
 - imprimir la portada da un CV en blanco y negro de 3 páginas A4 como mucho;
-- SEO: `canonical`, Open Graph, JSON-LD, `hreflang` en las notas, sitemap y RSS.
+- SEO: `lang="es"`, `canonical`, Open Graph, JSON-LD, sitemap y RSS; nada de `noindex` en páginas publicadas.
 
 ## Trampas conocidas
 

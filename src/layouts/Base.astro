@@ -3,21 +3,12 @@
 import '../styles/global.css';
 import { Font } from 'astro:assets';
 import { perfil, descripcion as descripcionPorDefecto, atribucion } from '../data/perfil';
-import type { Idioma } from '../i18n';
-
-export interface Alternativa {
-  lang: Idioma | 'x-default';
-  href: string;
-}
 
 interface Props {
   /** Título de la página; sin él se usa «Nombre · Rol». */
   titulo?: string;
   descripcion?: string;
-  lang?: Idioma;
   noindex?: boolean;
-  /** Versiones de la página en otros idiomas (hreflang). */
-  alternativas?: Alternativa[];
   /** Datos estructurados (JSON-LD). */
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   tipoOg?: 'website' | 'article';
@@ -28,9 +19,7 @@ interface Props {
 const {
   titulo,
   descripcion = descripcionPorDefecto,
-  lang = 'es',
   noindex = false,
-  alternativas = [],
   jsonLd,
   tipoOg = 'website',
   rss,
@@ -50,7 +39,7 @@ const menu: { texto: string; href: string }[] = [
 ---
 
 <!doctype html>
-<html lang={lang} data-theme="noche">
+<html lang="es" data-theme="noche">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -68,7 +57,6 @@ const menu: { texto: string; href: string }[] = [
     <meta name="description" content={descripcion} />
     <link rel="canonical" href={canonica} />
     {noindex && <meta name="robots" content="noindex" />}
-    {alternativas.map((a) => <link rel="alternate" hreflang={a.lang} href={new URL(a.href, Astro.site).href} />)}
     {rss && <link rel="alternate" type="application/rss+xml" title={rss.titulo} href={rss.href} />}
     <meta name="theme-color" content="#121212" />
     <meta name="author" content={perfil.nombre} />
@@ -78,7 +66,7 @@ const menu: { texto: string; href: string }[] = [
 
     <meta property="og:type" content={tipoOg} />
     <meta property="og:site_name" content={perfil.nombre} />
-    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_GB'} />
+    <meta property="og:locale" content="es_ES" />
     <meta property="og:title" content={tituloCompleto} />
     <meta property="og:description" content={descripcion} />
     <meta property="og:url" content={canonica} />

@@ -7,9 +7,8 @@ context: |
 
   ## El proyecto
   Web personal de Alejandro Dueñas Real (alejandroduenasreal.me): diseña y opera agentes de IA en
-  producción (LLMOps y plataforma). Astro 6 estático + Tailwind 4, sin backend. Portada en español en /,
-  blog bilingüe en src/content/blog/{es,en}/ con una entrada por semana ISO e idioma (el build falla si
-  hay dos). Todo el texto de la portada vive en src/data/perfil.ts. Página «Cómo se hace» en /como-se-hace/
+  producción (LLMOps y plataforma). Astro 6 estático + Tailwind 4, sin backend. Toda la web en español:
+  portada en / y blog en src/content/blog/ con una entrada por semana ISO (el build falla si hay dos). Todo el texto de la portada vive en src/data/perfil.ts. Página «Cómo se hace» en /como-se-hace/
   que enseña el circuito de especificación, CI y despliegue con datos reales.
   Diseño: composición basada en «Graphic Designer Portfolio Homepage» de Can Aydın (atribución obligatoria),
   rasgo propio de impresión risográfica (trama de puntos). Noche por defecto, modo día.

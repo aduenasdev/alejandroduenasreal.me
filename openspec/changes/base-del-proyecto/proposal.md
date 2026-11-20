@@ -10,7 +10,7 @@ agentes que trabajan en el repositorio.
 
 - Proyecto **Astro 6** estático con **Tailwind CSS 4** (`@tailwindcss/vite`), dependencias con versión fija.
 - Fuentes **Sora** y **Atkinson Hyperlegible Next** servidas desde el propio dominio con la API de fuentes de Astro.
-- i18n: español en la raíz y el inglés bajo `/en/`.
+- Idioma: toda la web en español (`lang="es"`); textos de la interfaz del blog en `src/i18n.ts`.
 - Tokens de diseño (noche por defecto y modo día con el variante `dia:`), clases de componente y estilos base.
 - `Base.astro`: cabecera, pie con la atribución del diseño, SEO común e interruptor de tema que se recuerda.
 - Icono «AD» (`public/favicon.svg`: A en tinta y D en amarillo), página 404 y una portada provisional.
@@ -31,7 +31,7 @@ Ninguna.
 
 - La CI y el despliegue (cambio `publicacion-automatica`).
 - El contenido de la portada (cambio `portada`), el blog (`blog`) y «Cómo se hace» (`como-se-hace`).
-- La portada en inglés.
+- Versiones en otros idiomas (decisión de Alejandro: toda la web, blog incluido, en español).
 
 ## Impact
 
