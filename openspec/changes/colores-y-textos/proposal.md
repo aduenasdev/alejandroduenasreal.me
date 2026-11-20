@@ -16,6 +16,7 @@ LinkedIn en español, que no se toca.
   años» en lugar de 12; fuera «6 equipos y más de 15 personas» de la portada (se queda en la nota del blog); la
   respuesta «¿Ha llevado IA a producción?» nombra Pangeanic y los despliegues en AWS; Vaquify entra en «Trabajo».
 - Se quita el botón «CV en PDF». La hoja de impresión se queda.
+- Icono nuevo: la A y la D como pistas de circuito impreso, unidas por una pista verde con pads en los extremos. El nombre de la cabecera pasa a «Alejandro Dueñas», con mayúsculas.
 - `AGENTS.md` y `openspec/config.yaml`: el empleador actual se puede nombrar; sus productos, webs y clientes, no.
 
 ## Capabilities

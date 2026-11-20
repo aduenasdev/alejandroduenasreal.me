@@ -3,7 +3,7 @@
 
 export const perfil = {
   nombre: 'Alejandro Dueñas Real',
-  nombreCorto: 'alejandro dueñas',
+  nombreCorto: 'Alejandro Dueñas',
   rol: 'Agentes de IA en producción y LLMOps',                       // <title> y og:image:alt
   titulo: 'Developer Machine Learning · Ingeniero de IA y Full-Stack', // jobTitle del JSON-LD (el del CV)
   ubicacion: 'España · remoto o híbrido',
