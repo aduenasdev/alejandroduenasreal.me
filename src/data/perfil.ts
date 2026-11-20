@@ -16,7 +16,7 @@ export const perfil = {
 
 // Meta description (≤ 160)
 export const descripcion =
-  'Lidero equipos que desarrollan con agentes de IA y llevo lo que construyen a producción: CI/CD, Kubernetes, evaluación y guardrails. Más de 10 años de software.';
+  'Lidero equipos que desarrollan con agentes de IA y llevo lo que construyen a producción, con revisión, pruebas y evaluación. Más de 10 años de software.';
 
 export const atribucion = {
   texto: 'Diseño basado en «Graphic Designer Portfolio Homepage» de Can Aydın (Figma Community)',
@@ -37,7 +37,7 @@ export const portada = {
   lineasTitular: ['Lidero equipos que desarrollan con agentes de IA y llevo lo que construyen a producción.'],
   insignia: 'LLMOps y plataforma',
   entrada:
-    'Diseño agentes de IA y la plataforma que los lleva a producción: CI/CD, Kubernetes y Terraform, trazas de cada llamada, evaluación antes de cada cambio, guardrails y control del coste. Más de 10 años de software full-stack; hoy en Pangeanic y antes Team Leader de una plataforma nacional con más de 45 M de pasajeros al año.',
+    'Pongo a un equipo a trabajar con agentes de IA sin perder el control: cada cambio, lo escriba una persona o un agente, pasa por revisión, pruebas y evaluación antes de salir, y siempre hay vuelta atrás. Más de 10 años construyendo software; hoy en Pangeanic y antes Team Leader de una plataforma nacional con más de 45 M de pasajeros al año.',
   cintaUno: ['Agentes en producción', 'LLMOps', 'Evaluación', 'Observabilidad', 'Guardrails', 'Coste por petición', 'MCP', 'RAG'],
   cintaDos: ['AWS Bedrock', 'Azure OpenAI', 'Vertex AI', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD', 'Python', 'LangGraph', 'Next.js'],
 };
