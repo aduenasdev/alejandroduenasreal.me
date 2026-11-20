@@ -1,0 +1,36 @@
+schema: spec-driven
+
+context: |
+  ## Idioma y estilo
+  Todos los artefactos en español (es-ES). En inglés solo los encabezados estructurales de OpenSpec,
+  las palabras SHALL/MUST, los ids de cambio, las rutas y el código.
+
+  ## El proyecto
+  Web personal de Alejandro Dueñas Real (alejandroduenasreal.me): diseña y opera agentes de IA en
+  producción (LLMOps y plataforma). Astro 6 estático + Tailwind 4, sin backend. Portada en español en /,
+  blog bilingüe en src/content/blog/{es,en}/ con una entrada por semana ISO e idioma (el build falla si
+  hay dos). Todo el texto de la portada vive en src/data/perfil.ts. Página «Cómo se hace» en /como-se-hace/
+  que enseña el circuito de especificación, CI y despliegue con datos reales.
+  Diseño: composición basada en «Graphic Designer Portfolio Homepage» de Can Aydın (atribución obligatoria),
+  rasgo propio de impresión risográfica (trama de puntos). Noche por defecto, modo día.
+  Audiencia: reclutadores y responsables técnicos de equipos de IA y plataforma.
+
+  ## Reglas de contenido
+  - Solo hechos comprobables. No inventar logros, cifras, empleos, testimonios ni certificados.
+    Lo pendiente se declara como pendiente.
+  - Del empleador actual, ni el nombre, ni sus productos, ni sus webs, ni capturas: solo texto genérico
+    del trabajo. De los clientes, solo FTChart puede nombrarse.
+  - El puesto actual es el del CV y no se pone ciudad. Nunca teléfono, secretos ni datos de clientes.
+
+  ## Git
+  - main protegida; una rama corta y un PR por cambio: feat/<change-id>, fix/<change-id>, chore/<change-id>.
+  - Commits convencionales: <tipo>(<ámbito>): <descripción en español>, con el trailer
+    OpenSpec-Change: <change-id>.
+  - Los agentes nunca fusionan: revisa y fusiona Alejandro, con rebase o merge commit (no squash).
+  - La aprobación de publicar es el merge del PR: queda registrada en GitHub.
+
+rules:
+  proposal:
+    - Decir qué queda fuera del alcance.
+  tasks:
+    - Cada tarea dice cómo se comprueba (orden, captura o comportamiento observable).
