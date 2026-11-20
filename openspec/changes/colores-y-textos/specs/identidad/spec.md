@@ -46,3 +46,20 @@ CC BY 4.0 y los cambios hechos. El pie de las páginas MUST NOT llevarlo.
 #### Scenario: Crédito
 - **WHEN** se abre `/como-se-hace/`
 - **THEN** al final aparece el crédito con el enlace a la obra y a la licencia, y el pie de `/` no lo lleva
+
+### Requirement: Trayectoria con FTChart
+La trayectoria SHALL tener 7 capítulos en orden cronológico por fecha de inicio, con FTChart como capítulo propio
+(«Consultor de IA», jun 2025 → jun 2026) entre los dos de Pangeanic, más «Las tres capas, a la vez». Sin JavaScript
+MUST verse los 8 bloques.
+
+#### Scenario: Etiqueta y orden
+- **WHEN** se abre `/` a 1440×900
+- **THEN** la etiqueta dice «Capítulo 01 / 08» y los capítulos empiezan en 2009, 2014, 2021, 2022, 2024, 2025 y 2026
+
+### Requirement: Datos del despliegue sin Actions
+Mientras un build no salga de una ejecución de GitHub Actions, «Cómo se hace» SHALL decirlo con texto («Ninguna:
+desplegado a mano» y «Sin ejecuciones todavía») y MUST NOT mostrar la insignia del workflow.
+
+#### Scenario: Despliegue a mano
+- **WHEN** se compila sin `PUBLIC_RUN_URL`
+- **THEN** la página no tiene ninguna imagen rota y no enlaza a `badge.svg`
