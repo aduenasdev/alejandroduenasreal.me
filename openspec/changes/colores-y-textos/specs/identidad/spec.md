@@ -30,3 +30,11 @@ pasajeros al año); el número de equipos liderados solo aparece en la nota del 
 #### Scenario: Cifras
 - **WHEN** se busca «12 años» o «6 equipos» en `src/data/perfil.ts`
 - **THEN** no aparece
+
+### Requirement: Titular de liderazgo
+El H1 de la portada SHALL ser «Hola, soy Alejandro. Lidero equipos que desarrollan con agentes de IA y llevo lo que
+construyen a producción.», y la imagen para compartir MUST decir lo mismo.
+
+#### Scenario: Titular
+- **WHEN** se abre `/` a 1440×900
+- **THEN** el H1 completo se ve sin hacer scroll

@@ -16,7 +16,7 @@ export const perfil = {
 
 // Meta description (≤ 160)
 export const descripcion =
-  'Diseño y opero agentes de IA en producción: CI/CD, Kubernetes, trazas, evaluación, guardrails y coste. Más de 10 años de software; hoy en Pangeanic.';
+  'Lidero equipos que desarrollan con agentes de IA y llevo lo que construyen a producción: CI/CD, Kubernetes, evaluación y guardrails. Más de 10 años de software.';
 
 export const atribucion = {
   texto: 'Diseño basado en «Graphic Designer Portfolio Homepage» de Can Aydın (Figma Community)',
@@ -34,7 +34,7 @@ export const conocimientos = [
 export const portada = {
   saludo: 'Hola, soy',
   nombre: 'Alejandro.',
-  lineasTitular: ['Diseño y opero', 'agentes de IA', 'en producción.'],
+  lineasTitular: ['Lidero equipos que desarrollan con agentes de IA y llevo lo que construyen a producción.'],
   insignia: 'LLMOps y plataforma',
   entrada:
     'Diseño agentes de IA y la plataforma que los lleva a producción: CI/CD, Kubernetes y Terraform, trazas de cada llamada, evaluación antes de cada cambio, guardrails y control del coste. Más de 10 años de software full-stack; hoy en Pangeanic y antes Team Leader de una plataforma nacional con más de 45 M de pasajeros al año.',
