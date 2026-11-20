@@ -13,7 +13,7 @@ agentes que trabajan en el repositorio.
 - i18n: español en la raíz y el inglés bajo `/en/`.
 - Tokens de diseño (noche por defecto y modo día con el variante `dia:`), clases de componente y estilos base.
 - `Base.astro`: cabecera, pie con la atribución del diseño, SEO común e interruptor de tema que se recuerda.
-- Icono «ad.» (`public/favicon.svg`), página 404 y una portada provisional.
+- Icono «AD» (`public/favicon.svg`: A en tinta y D en amarillo), página 404 y una portada provisional.
 - `AGENTS.md` (proceso, reglas de contenido, mapa del repositorio, cómo comprobar y trampas conocidas),
   `CLAUDE.md` (solo `@AGENTS.md`), `README.md`, `LICENSE` y `.node-version`.
 

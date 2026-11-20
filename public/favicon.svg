@@ -1,10 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ad.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AD">
   <rect width="64" height="64" rx="15" fill="#121212"/>
-  <g fill="none" stroke="#f5f5f2" stroke-width="6.4" stroke-linecap="round">
-    <circle cx="18.5" cy="37.5" r="8.2"/>
-    <path d="M26.7 29.5 V45.6"/>
-    <circle cx="39.6" cy="37.5" r="8.2"/>
-    <path d="M47.8 17.8 V45.6"/>
+  <g fill="none" stroke-width="6.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 46 L17 18 L27 46 M11.3 36.5 H22.7" stroke="#f5f5f2"/>
+    <path d="M36 18 V46 H41.5 A14 14 0 0 0 41.5 18 Z" stroke="#ffc72c"/>
   </g>
-  <circle cx="56.2" cy="43.2" r="3.9" fill="#ffc72c"/>
 </svg>
