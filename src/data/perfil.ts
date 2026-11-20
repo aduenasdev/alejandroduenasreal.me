@@ -22,3 +22,110 @@ export const atribucion = {
   texto: 'Diseño basado en «Graphic Designer Portfolio Homepage» de Can Aydın (Figma Community)',
   url: 'https://www.figma.com/community/file/1325338426202374850',
 };
+
+// knowsAbout del JSON-LD
+export const conocimientos = [
+  'Inteligencia artificial generativa', 'LLM en producción', 'Agentes de IA', 'Model Context Protocol (MCP)',
+  'Evaluación de modelos', 'Liderazgo de equipos de ingeniería', 'Ingeniería de plataforma',
+  'Procesamiento del lenguaje natural', 'Desarrollo full-stack', 'LLMOps', 'MLOps', 'Observabilidad de LLM',
+  'Kubernetes', 'Terraform', 'CI/CD', 'Python', 'Java', 'AWS',
+];
+
+export const portada = {
+  saludo: 'Hola, soy',
+  nombre: 'Alejandro.',
+  lineasTitular: ['Diseño y opero', 'agentes de IA', 'en producción.'],
+  insignia: 'LLMOps y plataforma',
+  entrada:
+    'Diseño agentes de IA y la plataforma que los lleva a producción: CI/CD, Kubernetes y Terraform, trazas de cada llamada, evaluación antes de cada cambio, guardrails y control del coste. 12 años de software full-stack y 3 liderando 6 equipos en una plataforma nacional con más de 45 M de viajeros al año.',
+  cintaUno: ['Agentes en producción', 'LLMOps', 'Evaluación', 'Observabilidad', 'Guardrails', 'Coste por petición', 'MCP', 'RAG'],
+  cintaDos: ['AWS Bedrock', 'Azure OpenAI', 'Vertex AI', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD', 'Python', 'LangGraph', 'Next.js'],
+};
+
+export type Capa = 'producto' | 'liderazgo' | 'ia';
+export const capas: Record<Capa, string> = { producto: 'Producto', liderazgo: 'Liderazgo', ia: 'IA' };
+
+export const servicios: { titulo: string; texto: string; capa: Capa | 'senal' }[] = [
+  { titulo: 'Diseño de agentes', texto: 'Arquitectura de agentes y LLM: RAG, herramientas y servidores MCP, con permisos y límites claros de lo que puede hacer cada uno.', capa: 'ia' },
+  { titulo: 'Despliegue y plataforma', texto: 'CI/CD, Docker, Kubernetes y Terraform en AWS: imágenes inmutables, despliegues sin corte y vuelta atrás preparada.', capa: 'producto' },
+  { titulo: 'Observabilidad, evaluación y coste', texto: 'Trazas de cada llamada, un banco de evaluación antes de cada cambio, guardrails y el coste de modelos e infraestructura bajo control.', capa: 'senal' },
+  { titulo: 'Producto y equipo', texto: 'Full-stack con diseño y frontend propios (Next.js, Python, Java, .NET) y 6 equipos coordinados en una plataforma nacional.', capa: 'liderazgo' },
+];
+
+// Capítulos en orden cronológico. `capas`: cualitativo (encendida/apagada). Fechas y puestos como en el CV.
+export const capitulos: { ano: string; fecha: string; puesto: string; donde: string; texto: string; capas: Capa[]; suma: string[] }[] = [
+  { ano: '2009', fecha: '2009 → 2014', puesto: 'Licenciatura en Ciencias de la Computación', donde: 'Universidad Central «Marta Abreu» de Las Villas', texto: 'Algoritmos, redes, bases de datos e ingeniería de software.', capas: [], suma: ['La base'] },
+  { ano: '2014', fecha: 'sep 2014 → feb 2021', puesto: 'Desarrollador full-stack y móvil', donde: 'SITRANS', texto: 'App Android de Viajando (Java → Kotlin) y su plataforma web; ciclo completo, del análisis al despliegue.', capas: ['producto'], suma: ['+ Producto full-stack y móvil'] },
+  { ano: '2021', fecha: 'feb 2021 → ene 2024', puesto: 'Team Leader', donde: 'SITRANS · Viajando', texto: 'Al frente de la plataforma nacional de billetes: 6 equipos y más de 15 personas (desarrollo, QA, soporte y despliegue, infraestructura), coordinados con el operador y el ministerio; arquitectura, entregas, pagos y antifraude.', capas: ['producto', 'liderazgo'], suma: ['+ Liderazgo de 6 equipos', '45 M de viajeros al año'] },
+  { ano: '2022', fecha: 'mar 2022 → abr 2025', puesto: 'Ingeniero de software independiente', donde: 'Clientes de EE. UU., México y Panamá', texto: 'FTChart, IA clínica para médicos de EE. UU. (Gemini en Vertex AI, Azure OpenAI, guardrails); logística para la Zona Libre de Colón (Spring Boot, Next.js, AWS) y un SaaS de viajes con más de 86.000 hoteles. Preventa, propuestas y PoC.', capas: ['producto', 'ia'], suma: ['+ IA en producción', '+ Preventa y PoC'] },
+  { ano: '2024', fecha: 'mar 2024 → abr 2026', puesto: 'Desarrollador de aplicaciones', donde: 'Empresa privada · externo, remoto', texto: 'Como profesional externo: microservicios, herramientas internas en Next.js y despliegue en AWS.', capas: ['producto', 'ia'], suma: ['+ Microservicios y AWS'] },
+  { ano: '2026', fecha: 'abr 2026 → hoy', puesto: 'Developer Machine Learning', donde: 'Empresa privada · plantilla', texto: 'LLM, RAG y NLP en producción; modelos con PyTorch en GPU; microservicios en Python, Node.js y Java; interfaces en Next.js; plataforma interna para trabajar con agentes de código.', capas: ['producto', 'ia'], suma: ['+ LLM, RAG y agentes en producción'] },
+];
+export const proximoCapitulo = {
+  puesto: 'Las tres capas, a la vez',
+  texto: 'Lo que busco: diseñar y operar agentes en producción y la plataforma que los sostiene, con un equipo.',
+  capas: ['producto', 'liderazgo', 'ia'] as Capa[],
+};
+
+export const entrega = {
+  intro: 'La IA acelera, pero no decide sola. Cada cambio, lo escriba una persona o un agente, recorre el mismo camino.',
+  pasos: [
+    { nombre: 'Especificación', detalle: 'qué y por qué' },
+    { nombre: 'Agente', detalle: 'con reglas y permisos' },
+    { nombre: 'Revisión', detalle: 'humana, obligatoria' },
+    { nombre: 'Pruebas', detalle: 'en la CI' },
+    { nombre: 'Evaluación', detalle: 'umbral de calidad', control: true },
+    { nombre: 'Despliegue', detalle: 'con vuelta atrás' },
+  ] as { nombre: string; detalle: string; control?: boolean }[],
+  base: 'reglas · permisos · memoria · hooks · servidores MCP · trazas y coste por petición',
+  retorno: 'Lo que falla en producción vuelve a la especificación como prueba nueva.',
+};
+
+export const trabajos: { sello: string; titulo: string; url?: string; contexto: string; hecho: string; stack: string[]; tinta: 'senal' | 'prod' | 'lid' | 'ia' }[] = [
+  { sello: 'Ahora', titulo: 'LLM y agentes en producción', contexto: 'Trabajo actual, desde 2024.',
+    hecho: 'Integración de LLM en flujos de producción con recuperación de contexto (RAG), trazas de cada llamada y evaluación con un banco fijo antes de cada cambio. Microservicios, interfaces en Next.js, despliegues sin corte en AWS y agentes de código con revisión, pruebas y permisos.',
+    stack: ['Python', 'LangChain / LangGraph', 'AWS Bedrock', 'pgvector', 'Next.js'], tinta: 'senal' },
+  { sello: 'EE. UU.', titulo: 'FTChart · IA clínica con respuestas verificables', url: 'https://ftchart.com/', contexto: 'Plataforma para médicos y clínicas de EE. UU., en producción.',
+    hecho: 'Búsqueda en historiales complejos, documentación generada por IA y respuestas que se comprueban contra la página de la que salen. Unas 7.300 pruebas antes de cada versión, guardrails y despliegues fuera del horario de consulta. Diseño y frontend propios.',
+    stack: ['.NET', 'Next.js', 'Gemini en Vertex AI', 'Azure OpenAI', 'Docker'], tinta: 'ia' },
+  { sello: '2021 → 2024', titulo: 'Viajando · billetes para todo un país', contexto: 'Plataforma oficial de billetes de autobús y tren de Cuba, más de 45 M de pasajeros al año.',
+    hecho: 'Como Team Leader, 6 equipos y más de 15 personas. Pagos integrados, controles contra la reventa, colas automáticas y la app Android migrada de Java a Kotlin sin parar el servicio.',
+    stack: ['Java / Spring Boot', 'Kotlin', 'PHP', 'Python', 'Android'], tinta: 'lid' },
+  { sello: 'Proyecto propio', titulo: 'soberquant', url: 'https://soberquant.com', contexto: 'Análisis de mercados financieros con agentes.',
+    hecho: 'Agentes LLM que leen noticias y estrategias cuantitativas con backtest, con colas de trabajo y su propia interfaz.',
+    stack: ['Python', 'PyTorch / XGBoost', 'Celery + Redis', 'PostgreSQL', 'Next.js'], tinta: 'prod' },
+];
+
+export const preguntas: { pregunta: string; respuesta: string; fuentes: { texto: string; url: string }[] }[] = [
+  { pregunta: '¿Ha liderado equipos?',
+    respuesta: 'Sí. De 2021 a 2024 fue Team Leader de Viajando, la plataforma oficial de billetes de autobús y tren de Cuba: 6 equipos y más de 15 personas entre desarrollo, QA, soporte y despliegue e infraestructura, coordinados con el operador y el ministerio.',
+    fuentes: [{ texto: 'LinkedIn · experiencia en SITRANS (2021 → 2024)', url: 'https://www.linkedin.com/in/aduenasdev' }, { texto: 'Trayectoria · Team Leader', url: '#trayectoria' }] },
+  { pregunta: '¿Ha llevado IA a producción?',
+    respuesta: 'Sí. FTChart, IA clínica para médicos de EE. UU.: respuestas que citan la página del historial de la que salen, guardrails y revisión humana antes de archivar nada. Desde 2024, LLM y agentes en producción con evaluación antes de cada cambio.',
+    fuentes: [{ texto: 'ftchart.com', url: 'https://ftchart.com/' }, { texto: 'LinkedIn · experiencia actual', url: 'https://www.linkedin.com/in/aduenasdev' }] },
+  { pregunta: '¿Sabe desplegar y operar lo que construye?',
+    respuesta: 'Sí. Esta misma web se especifica con OpenSpec, se comprueba en CI y se despliega sola en Cloudflare Pages con vista previa por PR y vuelta atrás; en su trabajo, CI/CD, Docker, Kubernetes y Terraform en AWS, con trazas, evaluación y control del coste.',
+    fuentes: [{ texto: 'GitHub · el repositorio de esta web', url: 'https://github.com/aduenasdev/alejandroduenasreal.me' }] },
+  { pregunta: '¿Diseña y construye el frontend?',
+    respuesta: 'Sí, de punta a punta: la web y la aplicación de FTChart, la app Android y la web de Viajando, y esta web. Diseño, componentes, accesibilidad y despliegue.',
+    fuentes: [{ texto: 'ftchart.com', url: 'https://ftchart.com/' }, { texto: 'GitHub · aduenasdev', url: 'https://github.com/aduenasdev' }] },
+  { pregunta: '¿Qué formación tiene en IA?',
+    respuesta: 'Licenciado en Ciencias de la Computación. En 2026: Machine Learning (DeepLearning.AI y Stanford), Google AI y dos especializaciones en agentes de IA. Todas se pueden verificar.',
+    fuentes: [{ texto: 'Formación · certificados verificables', url: '#formacion' }, { texto: 'Machine Learning Specialization · Coursera', url: 'https://www.coursera.org/account/accomplishments/specialization/certificate/ZDQEGONHQ0H1' }] },
+  { pregunta: '¿Dónde y cómo puede trabajar?',
+    respuesta: 'Desde España, en remoto o híbrido. Abierto a conversaciones ahora.',
+    fuentes: [{ texto: 'Hablemos · contacto', url: '#hablemos' }] },
+];
+
+export const formacion = [
+  { titulo: 'Hands-on Agentic AI: Building Intelligent Agents', emisor: 'Coursera · especialización', fecha: 'oct 2026', url: 'https://www.coursera.org/account/accomplishments/specialization/U4HCH6O34MVK' },
+  { titulo: 'Autonomous AI Agent Systems and Orchestration', emisor: 'Edureka · Coursera', fecha: 'oct 2026', url: 'https://www.coursera.org/account/accomplishments/specialization/certificate/HMHOSDPRHZU3' },
+  { titulo: 'Machine Learning Specialization', emisor: 'DeepLearning.AI y Stanford', fecha: 'sep 2026', url: 'https://www.coursera.org/account/accomplishments/specialization/certificate/ZDQEGONHQ0H1' },
+  { titulo: 'Google Project Management', emisor: 'Google · certificado profesional', fecha: 'sep 2026', url: 'https://coursera.org/verify/professional-cert/SBMWF98CNEZD' },
+  { titulo: 'Google AI', emisor: 'Google · certificado profesional', fecha: 'ago 2026', url: 'https://coursera.org/verify/professional-cert/WOJC9HBYGM7J' },
+];
+
+export const contacto = {
+  titulo: '¿Construimos IA que llegue a producción?',
+  texto: 'Una conversación de 30 minutos sobre tu equipo y lo que necesita. Escríbeme o copia el correo con un clic.',
+};

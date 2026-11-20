@@ -1,15 +1,197 @@
 ---
-// Portada provisional: la página completa llega con el cambio «portada».
 import Base from '../layouts/Base.astro';
-import { perfil } from '../data/perfil';
+import Foto from '../components/Foto.astro';
+import Cintas from '../components/Cintas.astro';
+import Encabezado from '../components/Encabezado.astro';
+import Trayectoria from '../components/Trayectoria.astro';
+import Preguntas from '../components/Preguntas.astro';
+import Contacto from '../components/Contacto.astro';
+import { perfil, portada, servicios, entrega, trabajos, formacion, conocimientos, descripcion } from '../data/perfil';
+
+const dos = (n: number) => String(n).padStart(2, '0');
+const colorFondo = { ia: 'bg-ia', producto: 'bg-prod', liderazgo: 'bg-lid', senal: 'bg-senal' } as const;
+const colorTrama = { senal: 'var(--color-senal)', prod: 'var(--prod)', lid: 'var(--lid)', ia: 'var(--ia)' } as const;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: perfil.nombre,
+  jobTitle: perfil.titulo,
+  description: descripcion,
+  url: perfil.sitio,
+  image: `${perfil.sitio}/og.png`,
+  email: `mailto:${perfil.correo}`,
+  address: { '@type': 'PostalAddress', addressCountry: 'ES' },
+  sameAs: [perfil.linkedin, perfil.github],
+  knowsAbout: conocimientos,
+};
 ---
 
-<Base>
-  <section class="contenedor pt-16">
-    <p class="etiqueta">{perfil.estado}</p>
-    <h1 class="mt-4 font-display text-[clamp(40px,5vw,66px)] font-semibold leading-[1.1]">
-      Hola, soy <span class="text-senal">Alejandro.</span>
-    </h1>
-    <p class="mt-6 max-w-[54ch] text-tinta-2">Web en construcción.</p>
+<Base jsonLd={jsonLd}>
+  <!-- 1. Portada -->
+  <section class="portada contenedor grid items-center gap-12 pt-6 md:pt-10 lg:grid-cols-[1.25fr_.75fr] lg:gap-16" aria-labelledby="titular">
+    <div>
+      <p class="inline-flex items-center gap-2.5 rounded-full border border-borde px-4 py-2 font-display text-[13.5px] font-semibold text-tinta-2">
+        <span class="punto-vivo" aria-hidden="true"></span>{perfil.estado} · {portada.insignia}
+      </p>
+      <h1 id="titular" class="mt-6 font-display text-[clamp(40px,5vw,66px)] font-semibold leading-[1.1] tracking-[-.015em]">
+        {portada.saludo}{' '}
+        <span class="nombre text-senal dia:bg-[linear-gradient(transparent_60%,var(--color-senal)_60%)] dia:text-tinta">{portada.nombre}</span>
+        {portada.lineasTitular.map((l) => <><br />{' '}{l}</>)}
+      </h1>
+      <p class="contacto-impreso hidden">
+        {perfil.ubicacion} · {perfil.correo} · linkedin.com/in/aduenasdev · alejandroduenasreal.me
+      </p>
+      <p class="mt-6 max-w-[54ch] text-[18px] text-tinta-2">{portada.entrada}</p>
+      <div class="acciones mt-8 flex flex-wrap gap-3">
+        <a href="#hablemos" class="pildora pildora-llena">Hablemos</a>
+        <a href="#trabajo" class="pildora">Ver mi trabajo</a>
+      </div>
+    </div>
+    <Foto />
+  </section>
+
+  <!-- 2. Cintas -->
+  <Cintas />
+
+  <!-- 3. Qué hago -->
+  <section id="que-hago" class="contenedor scroll-mt-5" aria-labelledby="h-que-hago">
+    <Encabezado
+      id="h-que-hago"
+      etiqueta="Qué hago"
+      lineas={['Del diseño del agente', 'a producción, y después.']}
+      texto="Un agente no termina cuando funciona en local: hay que desplegarlo, vigilarlo, evaluarlo y saber cuánto cuesta. Esa es la parte que hago."
+    />
+    <ul class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {
+        servicios.map((s) => (
+          <li class="tarjeta p-6">
+            <span class="grid size-12 place-items-center rounded-[14px] border border-borde bg-fondo-2" aria-hidden="true">
+              <span class:list={['size-3.5 rotate-45 rounded-[3px]', colorFondo[s.capa]]} />
+            </span>
+            <h3 class="mt-5 font-display text-[19px] font-semibold leading-tight">{s.titulo}</h3>
+            <p class="mt-3 text-[16px] text-tinta-2">{s.texto}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- 4. Cómo trabajo -->
+  <section id="como-trabajo" class="contenedor scroll-mt-5 pt-24" aria-labelledby="h-como-trabajo">
+    <Encabezado id="h-como-trabajo" etiqueta="Cómo trabajo" lineas={['Personas y agentes,', 'mismo camino.']} texto={entrega.intro} />
+    <ol class="pasos mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6 lg:gap-6">
+      {
+        entrega.pasos.map((p, i) => (
+          <li class:list={['paso relative rounded-[18px] border p-5', p.control ? 'border-senal bg-senal text-noche' : 'border-borde bg-tarjeta']}>
+            <span class:list={['font-display text-[13px] font-bold tracking-[.14em]', p.control ? '' : 'text-tinta-2']}>{dos(i + 1)}</span>
+            <p class="mt-3 font-display text-[17px] font-semibold leading-tight">
+              {p.nombre}
+              {p.control && <span class="font-normal"> · control</span>}
+            </p>
+            <p class:list={['mt-1.5 text-[14.5px] leading-snug', p.control ? '' : 'text-tinta-2']}>{p.detalle}</p>
+            {i < entrega.pasos.length - 1 && (
+              <span class="flecha absolute -right-[19px] top-1/2 hidden -translate-y-1/2 font-display text-[18px] text-tinta-3 lg:block" aria-hidden="true">→</span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+    <div class="mt-6 flex flex-col gap-2 rounded-[18px] border-[1.5px] border-dashed border-borde px-6 py-5 text-[15.5px] md:flex-row md:items-center md:justify-between md:gap-8">
+      <p><strong class="font-display font-semibold">Debajo de todo:</strong> <span class="text-tinta-2">{entrega.base}</span></p>
+      <p class="text-tinta-2 md:text-right">↺ {entrega.retorno}</p>
+    </div>
+  </section>
+
+  <!-- 5. Trayectoria -->
+  <section id="trayectoria" class="contenedor scroll-mt-5 pt-24" aria-labelledby="h-trayectoria">
+    <Encabezado
+      id="h-trayectoria"
+      etiqueta="Trayectoria"
+      lineas={['Tres capas,', 'sumadas una a una.']}
+      texto="Producto, liderazgo e IA, de 2009 a hoy. Al bajar, el año cambia y se encienden las capas de cada capítulo."
+    />
+    <Trayectoria />
+  </section>
+
+  <!-- 6. Trabajo -->
+  <section id="trabajo" class="contenedor scroll-mt-5 pt-24" aria-labelledby="h-trabajo">
+    <Encabezado
+      id="h-trabajo"
+      etiqueta="Trabajo"
+      lineas={['Lo que he construido.']}
+      texto="Sin capturas ni datos de clientes: qué se hizo, con qué y cómo se comprobó."
+    />
+    <ul class="mt-12 grid gap-5 md:grid-cols-2">
+      {
+        trabajos.map((t, i) => (
+          <li class="trabajo tarjeta flex flex-col overflow-hidden">
+            <div class="cubierta relative h-[170px] overflow-hidden border-b border-borde bg-fondo-2 [--hueco-fondo:var(--fondo-2)]" aria-hidden="true">
+              <span class="trama absolute -right-10 -top-14 size-[220px] rounded-full" style={`--trama: ${colorTrama[t.tinta]}`} />
+              <span class="trama absolute right-[150px] top-[88px] size-[70px] rounded-full" style="--trama: var(--tinta-3)" />
+              <span class="hueco absolute -bottom-5 left-5 font-display text-[110px] font-bold leading-none">{dos(i + 1)}</span>
+              <span class="absolute left-5 top-5 rounded-full bg-noche px-3.5 py-1.5 font-display text-[12.5px] font-semibold text-[#f5f5f2]">{t.sello}</span>
+            </div>
+            <div class="flex flex-1 flex-col p-6 md:p-7">
+              <h3 class="font-display text-[21px] font-semibold leading-tight">{t.titulo}</h3>
+              <p class="mt-1.5 text-[15px] text-tinta-2">{t.contexto}</p>
+              <p class="mt-4 text-[16px]">{t.hecho}</p>
+              {t.url && (
+                <p class="mt-4">
+                  <a href={t.url} class="font-display text-[15px] font-semibold underline decoration-senal decoration-2 underline-offset-4 dia:decoration-prod" rel="noopener">
+                    {new URL(t.url).hostname} ↗
+                  </a>
+                </p>
+              )}
+              <ul class="chips mt-auto flex flex-wrap gap-2 pt-5" aria-label="Tecnología">
+                {t.stack.map((s) => (
+                  <li class="rounded-full bg-fondo-2 px-3 py-1 font-display text-[12.5px] font-semibold text-tinta-2">{s}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- 7. Preguntas con fuente -->
+  <section id="preguntas" class="contenedor scroll-mt-5 pt-24" aria-labelledby="h-preguntas">
+    <Encabezado
+      id="h-preguntas"
+      etiqueta="Preguntas con fuente"
+      lineas={['Lo que suelen', 'preguntarme.']}
+      texto="Respuestas escritas a mano, cada una con su fuente para que la compruebes."
+    />
+    <Preguntas />
+  </section>
+
+  <!-- 8. Formación -->
+  <section id="formacion" class="contenedor scroll-mt-5 pt-24" aria-labelledby="h-formacion">
+    <Encabezado
+      id="h-formacion"
+      etiqueta="Formación"
+      lineas={['Certificados que se', 'pueden verificar.']}
+      texto="Licenciado en Ciencias de la Computación. Cada tarjeta abre el certificado en la web de su emisor."
+    />
+    <ul class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {
+        formacion.map((f) => (
+          <li>
+            <a href={f.url} class="certificado tarjeta group flex h-full flex-col gap-2 p-6 no-underline transition-colors hover:border-tinta-3" rel="noopener">
+              <span class="etiqueta">{f.fecha}</span>
+              <span class="font-display text-[18px] font-semibold leading-snug">{f.titulo}</span>
+              <span class="text-[15px] text-tinta-2">{f.emisor}</span>
+              <span class="mt-auto pt-3 font-display text-[14px] font-semibold text-tinta-2 group-hover:text-tinta">Verificar ↗</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- 9. Hablemos -->
+  <section id="hablemos" class="contenedor scroll-mt-5 pt-24" aria-label="Hablemos">
+    <Contacto />
   </section>
 </Base>

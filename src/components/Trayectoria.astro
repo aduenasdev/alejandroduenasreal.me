@@ -1,0 +1,147 @@
+---
+// Trayectoria por capítulos. En escritorio, una columna fija enseña el año (que gira como un cuentakilómetros),
+// el puesto, el lugar y las tres capas del capítulo que cruza el centro de la pantalla.
+// Sin JavaScript se ven todas las tarjetas y la columna fija muestra el primer capítulo.
+import { capitulos, proximoCapitulo, capas, type Capa } from '../data/perfil';
+
+const total = capitulos.length + 1;
+const dos = (n: number) => String(n).padStart(2, '0');
+const ultimoAno = capitulos[capitulos.length - 1].ano;
+const primero = capitulos[0];
+const ordenCapas = Object.keys(capas) as Capa[];
+const colorCapa: Record<Capa, string> = { producto: 'bg-prod', liderazgo: 'bg-lid', ia: 'bg-ia' };
+const digitos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+---
+
+<div data-trayectoria class="trayectoria mt-12 lg:grid lg:grid-cols-[5fr_7fr] lg:gap-14">
+  <!-- Columna fija (solo escritorio). aria-hidden: su contenido ya está en las tarjetas. -->
+  <div class="t-fija hidden lg:block" aria-hidden="true">
+    <div class="sticky top-24">
+      <p class="etiqueta" data-t-etiqueta>Capítulo 01 / {dos(total)}</p>
+      <p class="mt-3 whitespace-nowrap font-display text-[clamp(96px,9.4vw,140px)] font-bold leading-none tracking-[-.02em]" data-t-ano>
+        {
+          [...primero.ano].map((d, k) => (
+            <span class:list={['cifra', k < 2 ? 'hueco' : 'text-senal']}>
+              <span style={`transform: translateY(-${d}em)`}>
+                {digitos.map((n) => <span>{n}</span>)}
+              </span>
+            </span>
+          ))
+        }
+      </p>
+      <p class="mt-5 font-display text-[22px] font-semibold leading-tight" data-t-puesto>{primero.puesto}</p>
+      <p class="mt-1.5 text-tinta-2" data-t-donde>{primero.donde}</p>
+
+      <ul class="mt-8 flex flex-col gap-3.5">
+        {
+          ordenCapas.map((c) => (
+            <li class="grid grid-cols-[92px_1fr] items-center gap-4">
+              <span class="font-display text-[13px] font-semibold uppercase tracking-[.14em] text-tinta-2">{capas[c]}</span>
+              <span class="h-2.5 overflow-hidden rounded-full bg-borde">
+                <span
+                  class:list={['t-barra block h-full rounded-full', colorCapa[c]]}
+                  data-t-capa={c}
+                  style={`width: ${primero.capas.includes(c) ? '100%' : '0%'}`}
+                />
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-8 flex gap-1.5">
+        {Array.from({ length: total }, (_, k) => <span class:list={['h-1.5 flex-1 rounded-full', k === 0 ? 'bg-senal' : 'bg-borde']} data-t-punto />)}
+      </div>
+    </div>
+  </div>
+
+  <ol class="flex flex-col gap-5">
+    {
+      capitulos.map((c, i) => (
+        <li
+          class="capitulo tarjeta p-6 md:p-8"
+          data-i={i}
+          data-ano={c.ano}
+          data-capas={c.capas.join(',')}
+          data-puesto={c.puesto}
+          data-donde={c.donde}
+          data-etiqueta={`Capítulo ${dos(i + 1)} / ${dos(total)}`}
+          data-activo={i === 0 ? '' : undefined}
+        >
+          <div class="t-movil [--hueco-fondo:var(--tarjeta)] mb-5 flex items-end justify-between gap-4 lg:hidden" aria-hidden="true">
+            <p class="font-display text-[64px] font-bold leading-none">
+              <span class="hueco">{c.ano.slice(0, 2)}</span><span class="text-senal">{c.ano.slice(2)}</span>
+            </p>
+            <span class="mb-2 flex gap-1.5">
+              {ordenCapas.map((k) => (
+                <span class:list={['h-2 w-7 rounded-full', c.capas.includes(k) ? colorCapa[k] : 'bg-borde']} />
+              ))}
+            </span>
+          </div>
+          <p class="etiqueta">{c.fecha}</p>
+          <h3 class="mt-2.5 font-display text-[22px] font-semibold leading-tight">{c.puesto}</h3>
+          <p class="mt-1 text-tinta-2">{c.donde}</p>
+          <p class="mt-4">{c.texto}</p>
+          <ul class="t-suma mt-5 flex flex-wrap gap-2" aria-label="Lo que sumó">
+            {c.suma.map((s) => (
+              <li class="rounded-full border border-borde px-3.5 py-1 font-display text-[13px] font-semibold text-tinta-2">{s}</li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+    <li
+      class="capitulo proximo rounded-[22px] bg-senal p-6 text-noche md:p-8"
+      data-i={capitulos.length}
+      data-ano={ultimoAno}
+      data-capas={proximoCapitulo.capas.join(',')}
+      data-puesto={proximoCapitulo.puesto}
+      data-donde="Hablemos"
+      data-etiqueta="Próximo capítulo"
+    >
+      <p class="font-display text-[12.5px] font-semibold uppercase tracking-[.2em]">Próximo capítulo</p>
+      <h3 class="mt-2.5 font-display text-[26px] font-semibold leading-tight">{proximoCapitulo.puesto}</h3>
+      <p class="mt-3 max-w-[48ch]">{proximoCapitulo.texto}</p>
+      <p class="mt-6">
+        <a href="#hablemos" class="pildora border-noche bg-noche text-[#f5f5f2]">Hablemos →</a>
+      </p>
+    </li>
+  </ol>
+</div>
+
+<script>
+  const raiz = document.querySelector<HTMLElement>('[data-trayectoria]');
+  if (raiz) {
+    const tarjetas = Array.from(raiz.querySelectorAll<HTMLElement>('.capitulo'));
+    const columnas = Array.from(raiz.querySelectorAll<HTMLElement>('[data-t-ano] .cifra > span'));
+    const barras = Array.from(raiz.querySelectorAll<HTMLElement>('[data-t-capa]'));
+    const puntos = Array.from(raiz.querySelectorAll<HTMLElement>('[data-t-punto]'));
+    const etiqueta = raiz.querySelector<HTMLElement>('[data-t-etiqueta]');
+    const puesto = raiz.querySelector<HTMLElement>('[data-t-puesto]');
+    const donde = raiz.querySelector<HTMLElement>('[data-t-donde]');
+    raiz.classList.add('con-js');
+    let actual = -1;
+    const activa = (i: number) => {
+      if (i === actual) return;
+      actual = i;
+      const t = tarjetas[i];
+      [...(t.dataset.ano ?? '')].forEach((d, k) => columnas[k] && (columnas[k].style.transform = `translateY(-${d}em)`));
+      if (etiqueta) etiqueta.textContent = t.dataset.etiqueta ?? '';
+      if (puesto) puesto.textContent = t.dataset.puesto ?? '';
+      if (donde) donde.textContent = t.dataset.donde ?? '';
+      const activas = (t.dataset.capas ?? '').split(',');
+      barras.forEach((b) => (b.style.width = activas.includes(b.dataset.tCapa ?? '') ? '100%' : '0%'));
+      puntos.forEach((p, k) => {
+        p.classList.toggle('bg-senal', k <= i);
+        p.classList.toggle('bg-borde', k > i);
+      });
+      tarjetas.forEach((c, k) => c.toggleAttribute('data-activo', k === i));
+    };
+    activa(0);
+    const obs = new IntersectionObserver(
+      (es) => es.forEach((e) => e.isIntersecting && activa(Number((e.target as HTMLElement).dataset.i))),
+      { rootMargin: '-45% 0px -50% 0px' },
+    );
+    tarjetas.forEach((t) => obs.observe(t));
+  }
+</script>

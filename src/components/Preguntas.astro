@@ -1,0 +1,72 @@
+---
+// Preguntas con fuente: a la izquierda las preguntas (solo con JavaScript), a la derecha la respuesta activa
+// con sus citas numeradas. Sin JavaScript no hay botones y se ven todas las respuestas.
+import { preguntas } from '../data/perfil';
+const dos = (n: number) => String(n).padStart(2, '0');
+---
+
+<div class="preguntas mt-12 grid gap-6 lg:grid-cols-[.85fr_1.15fr] lg:gap-10" data-preguntas>
+  <div class="solo-js flex flex-col gap-2.5" role="group" aria-label="Preguntas">
+    {
+      preguntas.map((p, i) => (
+        <button
+          type="button"
+          class="pregunta flex w-full cursor-pointer items-center gap-4 rounded-2xl border border-borde px-5 py-4 text-left font-display text-[16px] font-semibold transition-colors hover:border-tinta-3 aria-pressed:border-tinta aria-pressed:bg-tinta aria-pressed:text-fondo"
+          aria-pressed={i === 0 ? 'true' : 'false'}
+          aria-controls={`respuesta-${i + 1}`}
+          data-i={i}
+        >
+          <span class="text-[13px] tracking-[.12em] opacity-70">{dos(i + 1)}</span>
+          <span>{p.pregunta}</span>
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="flex flex-col gap-5">
+    {
+      preguntas.map((p, i) => (
+        <article id={`respuesta-${i + 1}`} class:list={['respuesta tarjeta p-6 md:p-8', i === 0 && 'activa']}>
+          <p class="etiqueta">Respuesta {dos(i + 1)}</p>
+          <h3 class="mt-2.5 font-display text-[24px] font-semibold leading-tight">{p.pregunta}</h3>
+          <p class="mt-4 text-[17.5px]">
+            {p.respuesta}{' '}
+            {p.fuentes.map((_, k) => (
+              <a
+                href={`#fuente-${i + 1}-${k + 1}`}
+                class="ml-0.5 inline-grid h-6 min-w-6 place-items-center rounded-full bg-senal px-1.5 align-[2px] font-display text-[12px] font-bold text-noche no-underline"
+                aria-label={`Fuente ${k + 1}`}
+              >
+                {k + 1}
+              </a>
+            ))}
+          </p>
+          <ol class="mt-5 flex flex-col gap-2 border-t border-borde pt-4 text-[15px]">
+            {p.fuentes.map((f, k) => (
+              <li id={`fuente-${i + 1}-${k + 1}`} class="flex gap-3">
+                <span class="font-display font-bold text-tinta-2">{k + 1}</span>
+                <a href={f.url} class="underline decoration-borde underline-offset-4 hover:decoration-senal" set:text={f.texto} />
+              </li>
+            ))}
+          </ol>
+        </article>
+      ))
+    }
+    <p class="text-[14.5px] text-tinta-2">
+      Sin LLM: respuestas escritas y revisadas a mano. Lo mismo que se le pide a la IA en FTChart: que cite su fuente.
+    </p>
+  </div>
+</div>
+
+<script>
+  const raiz = document.querySelector<HTMLElement>('[data-preguntas]');
+  if (raiz) {
+    const botones = Array.from(raiz.querySelectorAll<HTMLButtonElement>('.pregunta'));
+    const respuestas = Array.from(raiz.querySelectorAll<HTMLElement>('.respuesta'));
+    const elige = (i: number) => {
+      botones.forEach((b, k) => b.setAttribute('aria-pressed', String(k === i)));
+      respuestas.forEach((r, k) => r.classList.toggle('activa', k === i));
+    };
+    botones.forEach((b, i) => b.addEventListener('click', () => elige(i)));
+  }
+</script>
