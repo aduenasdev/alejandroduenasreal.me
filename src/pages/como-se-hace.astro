@@ -70,7 +70,7 @@ const nota = [
       <div class="bg-tarjeta p-5">
         <dt class="etiqueta">Commit desplegado</dt>
         <dd class="mt-2 font-display text-[17px] font-semibold">
-          {commit ? <a href={`${repo}/commit/${commit}`} class="underline decoration-senal underline-offset-4 dia:decoration-prod" set:text={commit.slice(0, 7)} /> : 'local'}
+          {commit ? <a href={`${repo}/commit/${commit}`} class="underline decoration-senal underline-offset-4 dia:decoration-enlace" set:text={commit.slice(0, 7)} /> : 'local'}
         </dd>
       </div>
       <div class="bg-tarjeta p-5">
@@ -80,7 +80,7 @@ const nota = [
       <div class="bg-tarjeta p-5">
         <dt class="etiqueta">Ejecución de Actions</dt>
         <dd class="mt-2 font-display text-[17px] font-semibold">
-          {ejecucion ? <a href={ejecucion} class="underline decoration-senal underline-offset-4 dia:decoration-prod">Ver la ejecución ↗</a> : 'local'}
+          {ejecucion ? <a href={ejecucion} class="underline decoration-senal underline-offset-4 dia:decoration-enlace">Ver la ejecución ↗</a> : 'local'}
         </dd>
       </div>
       <div class="bg-tarjeta p-5">

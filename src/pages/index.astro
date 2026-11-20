@@ -128,12 +128,12 @@ const jsonLd = {
     <ul class="mt-12 grid gap-5 md:grid-cols-2">
       {
         trabajos.map((t, i) => (
-          <li class="trabajo tarjeta flex flex-col overflow-hidden">
+          <li class:list={['trabajo tarjeta flex flex-col overflow-hidden', trabajos.length % 2 === 1 && i === trabajos.length - 1 && 'md:col-span-2']}>
             <div class="cubierta relative h-[170px] overflow-hidden border-b border-borde bg-fondo-2 [--hueco-fondo:var(--fondo-2)]" aria-hidden="true">
               <span class="trama absolute -right-10 -top-14 size-[220px] rounded-full" style={`--trama: ${colorTrama[t.tinta]}`} />
               <span class="trama absolute right-[150px] top-[88px] size-[70px] rounded-full" style="--trama: var(--tinta-3)" />
               <span class="hueco absolute -bottom-5 left-5 font-display text-[110px] font-bold leading-none">{dos(i + 1)}</span>
-              <span class="absolute left-5 top-5 rounded-full bg-noche px-3.5 py-1.5 font-display text-[12.5px] font-semibold text-[#f5f5f2]">{t.sello}</span>
+              <span class="absolute left-5 top-5 rounded-full bg-noche px-3.5 py-1.5 font-display text-[12.5px] font-semibold text-[#edefee]">{t.sello}</span>
             </div>
             <div class="flex flex-1 flex-col p-6 md:p-7">
               <h3 class="font-display text-[21px] font-semibold leading-tight">{t.titulo}</h3>
@@ -141,7 +141,7 @@ const jsonLd = {
               <p class="mt-4 text-[16px]">{t.hecho}</p>
               {t.url && (
                 <p class="mt-4">
-                  <a href={t.url} class="font-display text-[15px] font-semibold underline decoration-senal decoration-2 underline-offset-4 dia:decoration-prod" rel="noopener">
+                  <a href={t.url} class="font-display text-[15px] font-semibold underline decoration-senal decoration-2 underline-offset-4 dia:decoration-enlace" rel="noopener">
                     {new URL(t.url).hostname} ↗
                   </a>
                 </p>

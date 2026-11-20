@@ -33,9 +33,11 @@ Las specs vigentes están en `openspec/specs/` (`openspec list --specs`). Antes 
 - **Idioma: español (es-ES) en toda la web, blog incluido.** No se publican versiones en otros idiomas.
 - **Solo hechos comprobables.** No inventes logros, cifras, puestos, testimonios ni certificados. Lo pendiente se
   dice como pendiente.
-- **Empleador actual:** ni el nombre, ni sus productos, ni sus webs, ni sus clientes, ni capturas. Solo «Empresa
-  privada» y texto genérico del trabajo.
-- **Clientes:** solo **FTChart** puede nombrarse y enlazarse (`https://ftchart.com/`).
+- **Empleador actual:** se nombra (Pangeanic), pero ni sus productos, ni sus webs, ni sus clientes, ni capturas; el
+  trabajo, con texto genérico.
+- **Cifras:** solo las que también estén en el CV de LinkedIn en español («más de 10 años», 45 M de pasajeros al año).
+  El número de equipos liderados solo va en la nota del blog. El CV no se descarga desde la web: el contacto es el correo.
+- **Clientes y proyectos:** solo **FTChart** (`https://ftchart.com/`) y **Vaquify** (`https://vaquify.com/`) pueden nombrarse y enlazarse.
 - **Puesto:** el actual es el del CV; no se inventan puestos. Ubicación: «España · remoto o híbrido», nunca una ciudad.
 - **Nunca:** teléfono, dirección, secretos ni datos de clientes. Sin capturas de productos de terceros.
 - La atribución del diseño (Can Aydın, Figma Community) no se quita nunca del pie ni del README.
@@ -62,7 +64,7 @@ Las specs vigentes están en `openspec/specs/` (`openspec list --specs`). Antes 
 ## Diseño, en corto
 
 - Noche por defecto; el día se activa con `data-theme="dia"`. **No uses `dark:`**: usa el variante `dia:`.
-- Colores con los tokens (`bg-fondo`, `text-tinta-2`, `bg-senal`…). `prod`, `lid` e `ia` solo en barras y formas,
+- Paleta: tinta, gama de grises y un único verde (`senal` menta para rellenos; `enlace` esmeralda para texto, subrayados y foco). Colores con los tokens (`bg-fondo`, `text-tinta-2`, `bg-senal`…). `prod`, `lid` e `ia` solo en barras y formas,
   nunca en texto pequeño. Todo el texto cumple WCAG AA en los dos temas.
 - Rasgo propio: impresión risográfica (clase `.trama`). Nada de rejillas *bento*, *glassmorphism*, terminales falsas,
   degradados morados, neón ni máquinas de escribir.
@@ -81,8 +83,7 @@ npm run preview                     # y revisar a mano
 Antes de pedir revisión, en la vista previa:
 - capturas en móvil (390 px), tableta (768 px) y escritorio (1440 px), en noche y en día: sin desbordamiento horizontal ni errores de consola (CSP incluida);
 - teclado: todo se recorre y el foco se ve; `aria-pressed` correcto en los botones de estado;
-- sin JavaScript se ven los 7 capítulos y todas las respuestas; con movimiento reducido no hay animaciones;
-- imprimir la portada da un CV en blanco y negro de 3 páginas A4 como mucho;
+- sin JavaScript se ven los 8 capítulos y todas las respuestas; con movimiento reducido no hay animaciones;
 - SEO: `lang="es"`, `canonical`, Open Graph, JSON-LD, sitemap y RSS; nada de `noindex` en páginas publicadas.
 
 ## Trampas conocidas

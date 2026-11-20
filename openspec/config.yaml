@@ -17,8 +17,9 @@ context: |
   ## Reglas de contenido
   - Solo hechos comprobables. No inventar logros, cifras, empleos, testimonios ni certificados.
     Lo pendiente se declara como pendiente.
-  - Del empleador actual, ni el nombre, ni sus productos, ni sus webs, ni capturas: solo texto genérico
-    del trabajo. De los clientes, solo FTChart puede nombrarse.
+  - Del empleador actual (Pangeanic) se dice el nombre, pero ni sus productos, ni sus webs, ni sus clientes,
+    ni capturas. De clientes y proyectos, solo FTChart y Vaquify pueden nombrarse.
+  - Cifras solo si también están en el CV de LinkedIn en español; el número de equipos liderados, solo en el blog.
   - El puesto actual es el del CV y no se pone ciudad. Nunca teléfono, secretos ni datos de clientes.
 
   ## Git

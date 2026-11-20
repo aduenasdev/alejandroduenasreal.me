@@ -11,33 +11,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&display=block" rel="stylesheet">
 <style>
   * { margin: 0; box-sizing: border-box; }
-  html, body { width: 1200px; height: 630px; overflow: hidden; background: #121212; color: #f5f5f2; font-family: 'Sora', sans-serif; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #1b1d1c; color: #edefee; font-family: 'Sora', sans-serif; }
   .lienzo { position: relative; width: 1200px; height: 630px; padding: 54px 64px; }
   .marca { display: flex; align-items: center; gap: 14px; font-weight: 600; font-size: 19px; letter-spacing: .3em; }
   .marca svg { width: 40px; height: 40px; }
-  .pildora { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; border: 1.5px solid #2a2a2d; border-radius: 999px; padding: 9px 18px; font-size: 17px; font-weight: 600; color: #a8a8ad; }
-  .punto { width: 10px; height: 10px; border-radius: 50%; background: #ffc72c; }
+  .pildora { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; border: 1.5px solid #343736; border-radius: 999px; padding: 9px 18px; font-size: 17px; font-weight: 600; color: #bcbdbc; }
+  .punto { width: 10px; height: 10px; border-radius: 50%; background: #3fcf8e; }
   h1 { margin-top: 24px; font-size: 56px; font-weight: 600; line-height: 1.12; letter-spacing: -.015em; }
-  h1 em { font-style: normal; color: #ffc72c; }
+  h1 em { font-style: normal; color: #3fcf8e; }
   .foto { position: absolute; right: 64px; top: 54px; width: 300px; height: 330px; border-radius: 24px;
-    background: radial-gradient(120% 90% at 50% 15%, #f6f0e4 0%, #ece4d4 55%, #e2d7c2 100%); }
+    background: radial-gradient(120% 90% at 50% 15%, #d6f9e6 0%, #a9f1ca 55%, #8ee5b6 100%); }
   .ventana { position: absolute; left: 50%; top: 22px; width: 228px; height: 228px; transform: translateX(-50%); border-radius: 50%;
-    background: #f3eee2; box-shadow: 0 0 0 5px #dacdb3, 0 0 0 9px #bfae8f; overflow: hidden; }
+    background: #effcf5; box-shadow: 0 0 0 5px #b9ecd0, 0 0 0 9px #6fcf9c; overflow: hidden; }
   .pie { position: absolute; left: 20px; right: 20px; bottom: 18px; display: flex; justify-content: space-between; align-items: center;
-    background: #121212; border-radius: 999px; padding: 10px 16px; font-size: 13px; font-weight: 600; }
-  .pie b { color: #ffc72c; display: flex; align-items: center; gap: 7px; font-weight: 600; }
+    background: #1b1d1c; border-radius: 999px; padding: 10px 16px; font-size: 13px; font-weight: 600; }
+  .pie b { color: #3fcf8e; display: flex; align-items: center; gap: 7px; font-weight: 600; }
   .cinta { position: absolute; left: -40px; width: 1300px; white-space: nowrap; font-size: 24px; font-weight: 600; padding: 13px 0; }
-  .uno { top: 478px; background: #f5f5f2; color: #121212; transform: rotate(-2.6deg); }
-  .dos { top: 520px; background: #ffc72c; color: #121212; transform: rotate(1.8deg); }
+  .uno { top: 478px; background: #edefee; color: #1b1d1c; transform: rotate(-2.6deg); }
+  .dos { top: 520px; background: #3fcf8e; color: #1b1d1c; transform: rotate(1.8deg); }
   .cinta span { margin: 0 14px; }
-  .uno i { color: #ffc72c; font-style: normal; }
+  .uno i { color: #3fcf8e; font-style: normal; }
   .dos i { font-style: normal; }
 </style>
 </head>
 <body>
 <div class="lienzo">
   <div class="marca">
-    <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#121212" stroke="#2a2a2d" stroke-width="2"/><g fill="none" stroke-width="6.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 46 L17 18 L27 46 M11.3 36.5 H22.7" stroke="#f5f5f2"/><path d="M36 18 V46 H41.5 A14 14 0 0 0 41.5 18 Z" stroke="#ffc72c"/></g></svg>
+    <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#1b1d1c" stroke="#343736" stroke-width="2"/><g fill="none" stroke-width="6.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 46 L17 18 L27 46 M11.3 36.5 H22.7" stroke="#edefee"/><path d="M36 18 V46 H41.5 A14 14 0 0 0 41.5 18 Z" stroke="#3fcf8e"/></g></svg>
     alejandro dueñas
   </div>
   <div class="pildora"><span class="punto"></span>Abierto a conversaciones · LLMOps y plataforma</div>
@@ -47,8 +47,8 @@
     <div class="ventana">
       <svg viewBox="0 0 200 200" width="228" height="228">
         <defs>
-          <pattern id="am" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(15)"><circle cx="3.5" cy="3.5" r="2.6" fill="#ffc72c"/></pattern>
-          <pattern id="az" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><circle cx="2.5" cy="2.5" r="2.15" fill="#1b5fd1"/></pattern>
+          <pattern id="am" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(15)"><circle cx="3.5" cy="3.5" r="2.6" fill="#3fcf8e"/></pattern>
+          <pattern id="az" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><circle cx="2.5" cy="2.5" r="2.15" fill="#0e7e4e"/></pattern>
         </defs>
         <circle cx="100" cy="100" r="92" fill="url(#am)"/>
         <g fill="none" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 1.5)">
