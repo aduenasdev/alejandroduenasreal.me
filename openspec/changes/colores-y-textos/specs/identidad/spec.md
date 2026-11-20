@@ -38,3 +38,11 @@ construyen a producción.», y la imagen para compartir MUST decir lo mismo.
 #### Scenario: Titular
 - **WHEN** se abre `/` a 1440×900
 - **THEN** el H1 completo se ve sin hacer scroll
+
+### Requirement: Crédito del diseño fuera del pie
+El crédito de la composición SHALL ir en «Cómo se hace» y en el README, con autor, enlace a la obra, licencia
+CC BY 4.0 y los cambios hechos. El pie de las páginas MUST NOT llevarlo.
+
+#### Scenario: Crédito
+- **WHEN** se abre `/como-se-hace/`
+- **THEN** al final aparece el crédito con el enlace a la obra y a la licencia, y el pie de `/` no lo lleva

@@ -2,7 +2,7 @@
 // Plantilla común: cabecera, pie, SEO y tema. Cada página pasa su título, su descripción y su ruta.
 import '../styles/global.css';
 import { Font } from 'astro:assets';
-import { perfil, descripcion as descripcionPorDefecto, atribucion } from '../data/perfil';
+import { perfil, descripcion as descripcionPorDefecto } from '../data/perfil';
 import { publicadas } from '../blog';
 
 interface Props {
@@ -146,11 +146,6 @@ menu.push({ texto: 'Cómo se hace', href: '/como-se-hace/' });
           <p>
             Hecho con Astro y Tailwind. Textos y código escritos con agentes de IA, revisados y aprobados por mí ·
             <a href="/como-se-hace/" class="font-semibold text-tinta underline decoration-senal underline-offset-4 dia:decoration-enlace">Cómo se hace →</a>
-          </p>
-          <p class="atribucion">
-            <a href={atribucion.url} class="underline decoration-borde underline-offset-4 hover:decoration-senal" rel="noopener">
-              {atribucion.texto}
-            </a>
           </p>
         </div>
       </div>

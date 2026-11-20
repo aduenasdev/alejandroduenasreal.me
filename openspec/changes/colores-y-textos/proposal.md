@@ -32,7 +32,7 @@ escenario «CV en PDF».
 ## Fuera del alcance
 
 - Composición, tipografías, componentes y movimiento: no cambian.
-- La atribución del diseño (Can Aydın, Figma Community) se queda: es obligatoria.
+- La atribución del diseño se queda, como exige CC BY 4.0, pero sale del pie: pasa a «Cómo se hace» y al README.
 - El CV de LinkedIn no se toca.
 - `apple-touch-icon.png` y `og.png` se regeneran con las herramientas de siempre; si no hay navegador local, se dejan
   como tarea pendiente.

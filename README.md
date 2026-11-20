@@ -61,8 +61,9 @@ Se compila una vez y se despliega ese mismo artefacto: lo que se probó es lo qu
 
 ## Diseño
 
-Diseño basado en «Graphic Designer Portfolio Homepage» de Can Aydın (Figma Community):
-<https://www.figma.com/community/file/1325338426202374850>. El rasgo propio es la impresión risográfica (trama de
+Composición basada en «Graphic Designer Portfolio Homepage» de Can Aydın (Figma Community):
+<https://www.figma.com/community/file/1325338426202374850>, con licencia
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es). Adaptada: colores, textos y componentes propios. El rasgo propio es la impresión risográfica (trama de
 puntos) en el retrato, las portadas y los fondos.
 
 ## Licencia

@@ -3,6 +3,7 @@
 import Base from '../layouts/Base.astro';
 import Encabezado from '../components/Encabezado.astro';
 import Circuito from '../components/Circuito.astro';
+import { atribucion } from '../data/perfil';
 import flujo from '../../.github/workflows/ci-cd.yml?raw';
 
 const repo = 'https://github.com/aduenasdev/alejandroduenasreal.me';
@@ -266,5 +267,9 @@ const nota = [
         <p class="mt-8"><a href="/#hablemos" class="pildora pildora-llena">Hablemos →</a></p>
       </div>
     </div>
+    <p class="creditos mt-6 max-w-[70ch] text-[14px] text-tinta-3">
+      Composición basada en <a href={atribucion.url} class="underline decoration-borde underline-offset-4 hover:decoration-senal" rel="noopener" set:text={atribucion.obra} />, de {atribucion.autor} (Figma Community), con licencia
+      <a href={atribucion.licenciaUrl} class="underline decoration-borde underline-offset-4 hover:decoration-senal" rel="license noopener" set:text={atribucion.licencia} />. {atribucion.cambios}
+    </p>
   </section>
 </Base>

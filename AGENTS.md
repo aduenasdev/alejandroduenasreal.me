@@ -40,7 +40,7 @@ Las specs vigentes están en `openspec/specs/` (`openspec list --specs`). Antes 
 - **Clientes y proyectos:** solo **FTChart** (`https://ftchart.com/`) y **Vaquify** (`https://vaquify.com/`) pueden nombrarse y enlazarse.
 - **Puesto:** el actual es el del CV; no se inventan puestos. Ubicación: «España · remoto o híbrido», nunca una ciudad.
 - **Nunca:** teléfono, dirección, secretos ni datos de clientes. Sin capturas de productos de terceros.
-- La atribución del diseño (Can Aydın, Figma Community) no se quita nunca del pie ni del README.
+- La atribución del diseño (Can Aydın, Figma Community, CC BY 4.0) no se quita nunca del README ni de «Cómo se hace»: autor, enlace, licencia y cambios. No va en el pie.
 - Lo que lleva texto exacto (la imagen para compartir, los diagramas) se hace con código, nunca con IA de imágenes.
 
 ## Dónde está cada cosa
@@ -48,7 +48,7 @@ Las specs vigentes están en `openspec/specs/` (`openspec list --specs`). Antes 
 | Ruta | Qué hay |
 |---|---|
 | `src/data/perfil.ts` | **Todo** el texto de la portada. Los componentes no llevan texto propio salvo los encabezados de sección |
-| `src/layouts/Base.astro` | Cabecera, pie (con la atribución), SEO, script e interruptor de tema |
+| `src/layouts/Base.astro` | Cabecera, pie, SEO, script e interruptor de tema |
 | `src/styles/global.css` | Tailwind, tokens de noche y día, clases de componente, movimiento reducido e impresión |
 | `src/components/` | Componentes de la portada, del blog y del circuito |
 | `src/pages/` | Rutas: portada, 404, «Cómo se hace», blog, RSS y sitemap |

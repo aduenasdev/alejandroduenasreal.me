@@ -18,9 +18,14 @@ export const perfil = {
 export const descripcion =
   'Lidero equipos que desarrollan con agentes de IA y llevo lo que construyen a producción, con revisión, pruebas y evaluación. Más de 10 años de software.';
 
+// Crédito que exige la licencia CC BY 4.0 de Figma Community: autor, enlace, licencia y cambios. Va en «Cómo se hace».
 export const atribucion = {
-  texto: 'Diseño basado en «Graphic Designer Portfolio Homepage» de Can Aydın (Figma Community)',
+  obra: '«Graphic Designer Portfolio Homepage»',
+  autor: 'Can Aydın',
   url: 'https://www.figma.com/community/file/1325338426202374850',
+  licencia: 'CC BY 4.0',
+  licenciaUrl: 'https://creativecommons.org/licenses/by/4.0/deed.es',
+  cambios: 'Adaptada: colores, textos y componentes propios.',
 };
 
 // knowsAbout del JSON-LD
