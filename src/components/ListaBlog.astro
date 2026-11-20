@@ -1,0 +1,26 @@
+---
+// Índice del blog.
+import Base from '../layouts/Base.astro';
+import TarjetaNota from './TarjetaNota.astro';
+import { publicadas } from '../blog';
+import { rutaBlog, textos as t } from '../i18n';
+
+const notas = await publicadas();
+---
+
+<Base titulo={t.tituloBlog} descripcion={t.descripcionBlog} noindex={notas.length === 0} rss={{ titulo: t.rss, href: `${rutaBlog}rss.xml` }}>
+  <section class="contenedor pt-10" aria-labelledby="h-blog">
+    <p class="etiqueta">{t.notas}</p>
+    <h1 id="h-blog" class="titulo-seccion">{t.tituloBlog}</h1>
+    <p class="mt-5 max-w-[60ch] text-tinta-2">{t.descripcionBlog}</p>
+    {
+      notas.length ? (
+        <ul class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {notas.map((e) => <li><TarjetaNota entrada={e} /></li>)}
+        </ul>
+      ) : (
+        <p class="tarjeta mt-12 p-8 text-tinta-2">{t.sinNotas}</p>
+      )
+    }
+  </section>
+</Base>

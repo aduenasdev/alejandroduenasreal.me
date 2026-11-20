@@ -1,0 +1,41 @@
+---
+// Tarjeta de una nota: portada (o trama del color de su tipo), serie, tipo, fecha, minutos, título y descripción.
+import { Image } from 'astro:assets';
+import { colorTipo, fechaCorta, minutosLectura, urlEntrada, type Entrada } from '../blog';
+import { textos as t } from '../i18n';
+
+interface Props { entrada: Entrada; nivel?: 'h2' | 'h3' }
+const { entrada, nivel = 'h2' } = Astro.props;
+const { titulo, descripcion, fecha, tipo, serie, portada, portadaAlt } = entrada.data;
+const Titulo = nivel;
+---
+
+<article class="nota tarjeta group relative flex h-full flex-col overflow-hidden transition-colors hover:border-tinta-3">
+  <div class="relative aspect-video overflow-hidden rounded-t-[21px] border-b border-borde bg-fondo-2">
+    {
+      portada ? (
+        <Image src={portada} alt={portadaAlt ?? ''} widths={[400, 800]} sizes="(min-width: 1024px) 380px, 100vw" class="size-full object-cover" />
+      ) : (
+        <>
+          <span aria-hidden="true" class="trama absolute -right-8 -top-10 aspect-square w-[62%] rounded-full" style={`--trama: ${colorTipo[tipo]}`} />
+          <span aria-hidden="true" class="trama absolute bottom-[14%] left-[16%] aspect-square w-[22%] rounded-full" style="--trama: var(--tinta-3)" />
+        </>
+      )
+    }
+    {serie && <span class="absolute left-4 top-4 rounded-full bg-noche px-3 py-1.5 font-display text-[12px] font-semibold text-[#f5f5f2]">{serie}</span>}
+  </div>
+  <div class="flex flex-1 flex-col p-6">
+    <p class="flex flex-wrap items-center gap-x-3 gap-y-1 font-display text-[13px] font-semibold text-tinta-2">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-borde px-2.5 py-0.5 text-tinta">
+        <span class="size-2 rounded-full" style={`background: ${colorTipo[tipo]}`} aria-hidden="true"></span>{t.tipos[tipo]}
+      </span>
+      <time datetime={fecha.toISOString().slice(0, 10)}>{fechaCorta(fecha)}</time>
+      <span>{minutosLectura(entrada.body)} {t.minutos}</span>
+    </p>
+    <Titulo class="mt-3 font-display text-[20px] font-semibold leading-snug">
+      <a href={urlEntrada(entrada)} class="no-underline after:absolute after:inset-0">{titulo}</a>
+    </Titulo>
+    <p class="mt-2 line-clamp-2 text-[15.5px] text-tinta-2">{descripcion}</p>
+    <p class="mt-auto pt-5 font-display text-[14px] font-semibold text-tinta-2 group-hover:text-tinta" aria-hidden="true">{t.leer}</p>
+  </div>
+</article>

@@ -6,8 +6,11 @@ import Encabezado from '../components/Encabezado.astro';
 import Trayectoria from '../components/Trayectoria.astro';
 import Preguntas from '../components/Preguntas.astro';
 import Contacto from '../components/Contacto.astro';
+import TarjetaNota from '../components/TarjetaNota.astro';
+import { publicadas } from '../blog';
 import { perfil, portada, servicios, entrega, trabajos, formacion, conocimientos, descripcion } from '../data/perfil';
 
+const notas = (await publicadas()).slice(0, 3);
 const dos = (n: number) => String(n).padStart(2, '0');
 const colorFondo = { ia: 'bg-ia', producto: 'bg-prod', liderazgo: 'bg-lid', senal: 'bg-senal' } as const;
 const colorTrama = { senal: 'var(--color-senal)', prod: 'var(--prod)', lid: 'var(--lid)', ia: 'var(--ia)' } as const;
@@ -190,7 +193,25 @@ const jsonLd = {
     </ul>
   </section>
 
-  <!-- 9. Hablemos -->
+  <!-- 9. Notas (solo si hay alguna publicada) -->
+  {
+    notas.length > 0 && (
+      <section id="notas" class="contenedor scroll-mt-5 pt-24" aria-labelledby="h-notas">
+        <Encabezado
+          id="h-notas"
+          etiqueta="Notas"
+          lineas={['Una nota por semana.']}
+          texto="IA en producción, agentes de código y cómo trabajar con ellos sin perder el control."
+        />
+        <ul class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {notas.map((e) => <li><TarjetaNota entrada={e} nivel="h3" /></li>)}
+        </ul>
+        <p class="mt-8"><a href="/blog/" class="pildora">Todas las notas →</a></p>
+      </section>
+    )
+  }
+
+  <!-- 10. Hablemos -->
   <section id="hablemos" class="contenedor scroll-mt-5 pt-24" aria-label="Hablemos">
     <Contacto />
   </section>
