@@ -81,16 +81,21 @@ const nota = [
       <div class="bg-tarjeta p-5">
         <dt class="etiqueta">Ejecución de Actions</dt>
         <dd class="mt-2 font-display text-[17px] font-semibold">
-          {ejecucion ? <a href={ejecucion} class="underline decoration-senal underline-offset-4 dia:decoration-enlace">Ver la ejecución ↗</a> : 'local'}
+          {ejecucion ? <a href={ejecucion} class="underline decoration-senal underline-offset-4 dia:decoration-enlace">Ver la ejecución ↗</a> : 'Ninguna: desplegado a mano'}
         </dd>
       </div>
       <div class="bg-tarjeta p-5">
         <dt class="etiqueta">Estado del workflow</dt>
-        <dd class="mt-2.5">
-          <a href={`${repo}/actions/workflows/ci-cd.yml`}>
-            <img src={`${repo}/actions/workflows/ci-cd.yml/badge.svg`} alt="Estado del workflow ci-cd en GitHub Actions" height="20" class="h-5 w-auto" />
-          </a>
-        </dd>
+        {/* La insignia de GitHub solo existe si el workflow ha corrido; sin ejecución, se dice con texto */}
+        {ejecucion ? (
+          <dd class="mt-2.5">
+            <a href={`${repo}/actions/workflows/ci-cd.yml`}>
+              <img src={`${repo}/actions/workflows/ci-cd.yml/badge.svg`} alt="Estado del workflow ci-cd en GitHub Actions" height="20" class="h-5 w-auto" />
+            </a>
+          </dd>
+        ) : (
+          <dd class="mt-2 font-display text-[17px] font-semibold">Sin ejecuciones todavía</dd>
+        )}
       </div>
     </dl>
   </section>
