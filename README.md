@@ -30,6 +30,35 @@ npx astro check    # tipos
 El proceso, las reglas de contenido, el mapa del repositorio y cómo comprobar cada cambio están en
 [AGENTS.md](AGENTS.md). Las especificaciones viven en [`openspec/`](openspec/).
 
+## Despliegue
+
+Lo hace GitHub Actions ([`ci-cd.yml`](.github/workflows/ci-cd.yml)), sin tocar ningún servidor:
+
+1. **Cada PR:** `astro check`, build, `openspec validate --strict` y enlaces internos. Si todo
+   pasa, ese mismo `dist` se sube a Cloudflare Pages como **vista previa** y su URL se comenta en el PR.
+2. **Al fusionar en `main`:** se repiten las comprobaciones y el `dist` comprobado se despliega en **producción**
+   (`https://alejandroduenasreal.me`). Después se crea una release `vAAAA.MM.DD-<sha>` con notas generadas.
+
+Se compila una vez y se despliega ese mismo artefacto: lo que se probó es lo que se publica.
+
+### Preparar una vez (Cloudflare y GitHub)
+
+1. Proyecto de Pages en modo *Direct Upload*: `npx wrangler pages project create alejandroduenasreal --production-branch=main`.
+2. Token de API (*My Profile → API Tokens → Custom token*) con **Account · Cloudflare Pages · Edit**.
+3. Secretos de Actions: `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`.
+4. Entornos de GitHub `vista-previa` y `produccion`.
+5. Protección de `main`: PR obligatorio, check `comprobar` en verde, rama al día, sin *force push* ni borrado,
+   fusión con rebase o merge commit.
+6. Dominio: en *Workers & Pages → alejandroduenasreal → Custom domains*, `alejandroduenasreal.me` y
+   `www.alejandroduenasreal.me`; una *Redirect Rule* 301 de `www` a la raíz; *Email Address Obfuscation* apagado.
+
+### Vuelta atrás
+
+- **Normal:** revertir el PR (`git revert -m 1 <merge>`) en un PR nuevo. Al fusionarlo, el circuito despliega la
+  versión anterior.
+- **Urgente:** *Workers & Pages → alejandroduenasreal → Deployments → Rollback to this deployment* sobre el último
+  despliegue bueno. Tarda segundos y no necesita build.
+
 ## Diseño
 
 Diseño basado en «Graphic Designer Portfolio Homepage» de Can Aydın (Figma Community):
