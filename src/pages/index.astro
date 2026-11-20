@@ -1,0 +1,15 @@
+---
+// Portada provisional: la página completa llega con el cambio «portada».
+import Base from '../layouts/Base.astro';
+import { perfil } from '../data/perfil';
+---
+
+<Base>
+  <section class="contenedor pt-16">
+    <p class="etiqueta">{perfil.estado}</p>
+    <h1 class="mt-4 font-display text-[clamp(40px,5vw,66px)] font-semibold leading-[1.1]">
+      Hola, soy <span class="text-senal">Alejandro.</span>
+    </h1>
+    <p class="mt-6 max-w-[54ch] text-tinta-2">Web en construcción.</p>
+  </section>
+</Base>

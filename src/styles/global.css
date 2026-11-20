@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/* Tema: la noche es la base; el día se activa con data-theme="dia" en <html>. No se usa dark:. */
+@custom-variant dia (&:where([data-theme=dia], [data-theme=dia] *));
+
+:root {
+  --fondo: #121212; --fondo-2: #1a1a1b; --tarjeta: #18181a; --borde: #2a2a2d;
+  --tinta: #f5f5f2; --tinta-2: #a8a8ad; --tinta-3: #8c8c92;
+  --prod: #5b95ff; --lid: #ff6161; --ia: #33d17f;
+  --cinta: #f5f5f2; --cinta-tinta: #121212;
+  color-scheme: dark;
+}
+:root[data-theme='dia'] {
+  --fondo: #f3f3f0; --fondo-2: #ebebe6; --tarjeta: #ffffff; --borde: #d8d8d2;
+  --tinta: #141415; --tinta-2: #4f4f56; --tinta-3: #66666c;
+  --prod: #1b5fd1; --lid: #c42b2b; --ia: #0f7a3b;
+  --cinta: #141415; --cinta-tinta: #f5f5f2;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-fondo: var(--fondo);       --color-fondo-2: var(--fondo-2);
+  --color-tarjeta: var(--tarjeta);   --color-borde: var(--borde);
+  --color-tinta: var(--tinta);       --color-tinta-2: var(--tinta-2);   --color-tinta-3: var(--tinta-3);
+  --color-prod: var(--prod);         --color-lid: var(--lid);           --color-ia: var(--ia);
+  --color-senal: #ffc72c;            /* acento: amarillo */
+  --color-papel: #ece4d4;            /* tarjeta de la foto */
+  --color-noche: #121212;
+  --font-display: var(--font-titular), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-texto), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-fondo text-tinta font-sans antialiased;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  :focus-visible { outline: 3px solid var(--color-senal); outline-offset: 3px; border-radius: 4px; }
+  ::selection { background: var(--color-senal); color: var(--color-noche); }
+  a { color: inherit; }
+}
+
+@layer components {
+  .contenedor   { @apply mx-auto w-full max-w-[1180px] px-[18px] md:px-7; }
+  .etiqueta     { @apply font-display text-[12.5px] font-semibold uppercase tracking-[.2em] text-tinta-2; }
+  .pildora      { @apply inline-flex items-center gap-2 rounded-full border-[1.5px] border-tinta px-6 py-3 font-display text-[15px] font-semibold text-tinta no-underline transition-transform hover:-translate-y-px cursor-pointer; }
+  .pildora-llena{ @apply bg-tinta text-fondo; }
+  .tarjeta      { @apply rounded-[22px] border border-borde bg-tarjeta; }
+  .titulo-seccion { @apply mt-2.5 font-display text-[clamp(32px,3.6vw,46px)] font-semibold leading-[1.1] tracking-[-.01em]; }
+  .punto-vivo   { @apply inline-block size-2 rounded-full bg-senal; animation: latido 1.4s ease-in-out infinite; }
+  .trama        { background-image: radial-gradient(circle, var(--trama, var(--color-senal)) 36%, transparent 38%); background-size: 9px 9px; }
+  .hueco        { -webkit-text-stroke: 2px var(--tinta-3); color: transparent; }   /* cifras huecas */
+
+  /* Enlace «Saltar al contenido»: invisible hasta que recibe el foco */
+  .saltar { @apply absolute left-4 top-3 z-50 -translate-y-24 rounded-full bg-senal px-5 py-2.5 font-display text-sm font-semibold text-noche transition-transform focus:translate-y-0; }
+}
+
+@keyframes latido {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .35; transform: scale(.8); }
+}
+
+/* Sin JavaScript, los controles que solo funcionan con él no aparecen */
+html:not(.js) .solo-js { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

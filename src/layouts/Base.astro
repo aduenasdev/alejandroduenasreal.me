@@ -1,0 +1,179 @@
+---
+// Plantilla común: cabecera, pie, SEO y tema. Cada página pasa su título, su descripción y su ruta.
+import '../styles/global.css';
+import { Font } from 'astro:assets';
+import { perfil, descripcion as descripcionPorDefecto, atribucion } from '../data/perfil';
+import type { Idioma } from '../i18n';
+
+export interface Alternativa {
+  lang: Idioma | 'x-default';
+  href: string;
+}
+
+interface Props {
+  /** Título de la página; sin él se usa «Nombre · Rol». */
+  titulo?: string;
+  descripcion?: string;
+  lang?: Idioma;
+  noindex?: boolean;
+  /** Versiones de la página en otros idiomas (hreflang). */
+  alternativas?: Alternativa[];
+  /** Datos estructurados (JSON-LD). */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  tipoOg?: 'website' | 'article';
+  /** RSS que se anuncia en <head>. */
+  rss?: { titulo: string; href: string };
+}
+
+const {
+  titulo,
+  descripcion = descripcionPorDefecto,
+  lang = 'es',
+  noindex = false,
+  alternativas = [],
+  jsonLd,
+  tipoOg = 'website',
+  rss,
+} = Astro.props;
+
+const tituloCompleto = titulo ? `${titulo} · ${perfil.nombre}` : `${perfil.nombre} · ${perfil.rol}`;
+const canonica = new URL(Astro.url.pathname, Astro.site).href;
+const imagenOg = new URL('/og.png', Astro.site).href;
+const esInicio = Astro.url.pathname === '/';
+
+const menu: { texto: string; href: string }[] = [
+  { texto: 'Inicio', href: '/' },
+  { texto: 'Qué hago', href: '/#que-hago' },
+  { texto: 'Trayectoria', href: '/#trayectoria' },
+  { texto: 'Trabajo', href: '/#trabajo' },
+];
+---
+
+<!doctype html>
+<html lang={lang} data-theme="noche">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Tema antes de pintar: clase js y, si se eligió, el día. -->
+    <script is:inline>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        try {
+          if (localStorage.getItem('tema') === 'dia') d.setAttribute('data-theme', 'dia');
+        } catch (e) {}
+      })();
+    </script>
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={canonica} />
+    {noindex && <meta name="robots" content="noindex" />}
+    {alternativas.map((a) => <link rel="alternate" hreflang={a.lang} href={new URL(a.href, Astro.site).href} />)}
+    {rss && <link rel="alternate" type="application/rss+xml" title={rss.titulo} href={rss.href} />}
+    <meta name="theme-color" content="#121212" />
+    <meta name="author" content={perfil.nombre} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content={tipoOg} />
+    <meta property="og:site_name" content={perfil.nombre} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_GB'} />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:url" content={canonica} />
+    <meta property="og:image" content={imagenOg} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${perfil.nombre} · ${perfil.rol}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={tituloCompleto} />
+    <meta name="twitter:description" content={descripcion} />
+    <meta name="twitter:image" content={imagenOg} />
+
+    <Font cssVariable="--font-titular" preload={[{ weight: 600, style: 'normal' }]} />
+    <Font cssVariable="--font-texto" preload={[{ weight: 400, style: 'normal' }]} />
+
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+    <header class="cabecera contenedor flex items-center justify-between gap-4 py-5">
+      <a href="/" class="marca flex items-center gap-3 no-underline" aria-label={`${perfil.nombre}, inicio`}>
+        <img src="/favicon.svg" alt="" width="34" height="34" class="size-[34px]" />
+        <span class="font-display text-[14px] font-semibold tracking-[.3em]">{perfil.nombreCorto}</span>
+      </a>
+      <nav aria-label="Principal" class="hidden lg:block">
+        <ul class="flex items-center gap-7 font-display text-[14.5px] font-semibold">
+          {
+            menu.map((m) => (
+              <li>
+                <a
+                  href={m.href}
+                  class="text-tinta-2 no-underline transition-colors hover:text-tinta"
+                  aria-current={m.href === '/' && esInicio ? 'page' : Astro.url.pathname === m.href ? 'page' : undefined}
+                >
+                  {m.texto}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button
+          type="button"
+          class="interruptor-tema grid size-[42px] cursor-pointer place-items-center rounded-full border-[1.5px] border-borde text-[18px] leading-none transition-colors hover:border-tinta"
+          aria-pressed="true"
+          aria-label="Modo noche"
+          data-tema
+        >
+          <span aria-hidden="true" class="dia:hidden">☾</span>
+          <span aria-hidden="true" class="hidden dia:inline">☀</span>
+        </button>
+        <a href="/#hablemos" class="pildora pildora-llena hidden md:inline-flex">Hablemos</a>
+      </div>
+    </header>
+
+    <main id="contenido" tabindex="-1" class="outline-none">
+      <slot />
+    </main>
+
+    <footer class="pie contenedor mt-28 border-t border-borde py-10 text-[14.5px] text-tinta-2">
+      <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-10">
+        <p class="font-display font-semibold text-tinta">© 2026 {perfil.nombre}</p>
+        <div class="flex max-w-[64ch] flex-col gap-2 md:text-right">
+          <p>
+            Hecho con Astro y Tailwind. Textos y código escritos con agentes de IA, revisados y aprobados por mí.
+          </p>
+          <p class="atribucion">
+            <a href={atribucion.url} class="underline decoration-borde underline-offset-4 hover:decoration-senal" rel="noopener">
+              {atribucion.texto}
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Interruptor de tema: noche ⇄ día, recordado en localStorage
+      const boton = document.querySelector<HTMLButtonElement>('[data-tema]');
+      const raiz = document.documentElement;
+      const pinta = () => {
+        const noche = raiz.getAttribute('data-theme') !== 'dia';
+        boton?.setAttribute('aria-pressed', String(noche));
+      };
+      pinta();
+      boton?.addEventListener('click', () => {
+        const dia = raiz.getAttribute('data-theme') !== 'dia';
+        raiz.setAttribute('data-theme', dia ? 'dia' : 'noche');
+        try {
+          localStorage.setItem('tema', dia ? 'dia' : 'noche');
+        } catch {}
+        pinta();
+      });
+    </script>
+  </body>
+</html>
