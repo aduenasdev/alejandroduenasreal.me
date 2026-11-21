@@ -92,8 +92,11 @@ Antes de pedir revisión, en la vista previa:
   después de la tabla. Usa `<a href=… set:text={valor} />`.
 - **Astro:** dentro de un fragmento `<>…</>`, un espacio final se recorta. Si hace falta, ponlo como `{' '}`.
 - **Astro:** si una nota borrada sigue apareciendo en el build, borra la caché: `rm -rf .astro node_modules/.astro`.
-- **Vite:** `@tailwindcss/vite` arrastra Vite 8 y Astro 6 usa Vite 7 (rompe con «Missing field `tsconfigPaths`»).
-  `package.json` fija `overrides.vite`; súbelo solo junto con Astro.
+- **Vite:** `package.json` fija `overrides.vite` en la versión que pide Astro (Astro 7 → Vite 8; con Astro 6 era Vite 7,
+  y Vite 8 rompía con «Missing field `tsconfigPaths`»). Súbelo solo junto con Astro: si Astro pide una Vite más nueva
+  que el override, `astro check` falla con «does not provide an export named …».
+- **Node:** Astro 7 pide Node ≥ 22.23.4; la CI usa 24 (`.node-version`). Sin cambiar el Node del sistema:
+  `npx -y -p node@24 -c "npm run check"`.
 - **TypeScript:** `@astrojs/check` admite TypeScript 5 o 6, no 7.
 - **Google Fonts:** comprueba el nombre exacto de cualquier fuente nueva; el build avisa con «No data found for font
   family». La fuente condensada «Big Shoulders» no se usa.
