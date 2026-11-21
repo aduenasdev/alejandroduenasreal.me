@@ -8,8 +8,8 @@
 
 ## 2. Publicación (PR aparte, cuando sea cierto lo que cuenta)
 
-- [ ] 2.1 Repositorio público y despliegue automático funcionando; comprobar en `/como-se-hace/` el commit del último merge
-- [ ] 2.2 Cambiar `borrador: true` por `false` (y la `fecha` al lunes de esa semana si hace falta); comprobar la nota en la vista previa del PR
+- [x] 2.1 Repositorio público y despliegue automático funcionando; comprobar en `/como-se-hace/` el commit del último merge
+- [x] 2.2 Cambiar `borrador: true` por `false` (y la `fecha` al lunes de esa semana si hace falta); comprobar la nota en la vista previa del PR
 
 ## Workflow follow-up
 
