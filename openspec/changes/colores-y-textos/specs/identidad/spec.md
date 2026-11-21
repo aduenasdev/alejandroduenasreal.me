@@ -31,9 +31,10 @@ pasajeros al año, «6 equipos y más de 15 personas» en Viajando).
 - **WHEN** se abre `/`
 - **THEN** no aparece «12 años», y el capítulo de Team Leader, la tarjeta de Viajando y la respuesta «¿Ha liderado equipos?» dicen «6 equipos y más de 15 personas»
 
-### Requirement: Titular de liderazgo
-El H1 de la portada SHALL ser «Hola, soy Alejandro. Lidero equipos que desarrollan con agentes de IA y llevo lo que
-construyen a producción.», y la imagen para compartir MUST decir lo mismo.
+### Requirement: Titular
+El H1 de la portada SHALL ser «Hola, soy Alejandro. Diseño cómo se trabaja con agentes de IA y llevo lo que se
+construye a producción.», y la imagen para compartir MUST decir lo mismo. MUST NOT presentar el liderazgo de equipos
+como el puesto actual: el liderazgo se cuenta en pasado (Team Leader de Viajando).
 
 #### Scenario: Titular
 - **WHEN** se abre `/` a 1440×900
@@ -49,7 +50,7 @@ CC BY 4.0 y los cambios hechos. El pie de las páginas MUST NOT llevarlo.
 
 ### Requirement: Trayectoria con FTChart
 La trayectoria SHALL tener 7 capítulos en orden cronológico por fecha de inicio, con FTChart como capítulo propio
-(«Consultor de IA», jun 2025 → jun 2026) entre los dos de Pangeanic, más «Las tres capas, a la vez». Sin JavaScript
+(«Consultor de IA y desarrollador full-stack», jun 2025 → jun 2026) entre los dos de Pangeanic, más «Las tres capas, a la vez». Sin JavaScript
 MUST verse los 8 bloques.
 
 #### Scenario: Etiqueta y orden
@@ -71,3 +72,12 @@ decir «Disponible». El capítulo de ingeniero independiente SHALL acabar en en
 #### Scenario: Píldora y capítulo 2022
 - **WHEN** se abre `/`
 - **THEN** la página no contiene «Disponible», la píldora de la foto dice «Abierto a conversaciones» y el capítulo de 2022 dice «mar 2022 → ene 2024»
+
+### Requirement: Hoy, antes y lo que busca, como en LinkedIn y el CV
+La web SHALL dar el puesto actual como en el CV y en LinkedIn («Machine Learning Developer» en Pangeanic, que
+también hace de arquitecto de IA y de software), el liderazgo como experiencia pasada y lo que busca al final («un rol
+de Arquitecto de IA o Tech Lead»). MUST NOT aparecer «Developer Machine Learning».
+
+#### Scenario: Puesto y búsqueda
+- **WHEN** se abre `/`
+- **THEN** el capítulo de 2026 dice «Machine Learning Developer», el último bloque de la trayectoria dice «Arquitecto de IA o Tech Lead» y la página no contiene «Developer Machine Learning» ni «Lidero equipos»

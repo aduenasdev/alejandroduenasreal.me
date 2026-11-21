@@ -25,7 +25,7 @@ Después trabajé como independiente para clientes de Estados Unidos, México y 
 
 ## Qué busco
 
-Un puesto donde **diseñar y operar agentes de IA en producción** y la plataforma que los sostiene: despliegue,
+Un rol de **Arquitecto de IA o Tech Lead** donde **diseñar y operar agentes de IA en producción** y la plataforma que los sostiene: despliegue,
 observabilidad, evaluación, guardrails y coste. Y hacerlo con un equipo, que es donde junto las tres capas de mi
 trayectoria: producto, liderazgo e IA.
 
