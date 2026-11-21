@@ -5,4 +5,4 @@
 ## 2. Comprobación
 
 - [x] 2.1 `astro check`, `npm run build` y `openspec validate --all --strict`; `grep "Java 8" dist/index.html`
-- [ ] 2.2 Vista previa del PR: el capítulo cabe a 390, 768 y 1440 px
+- [x] 2.2 El capítulo cabe a 390, 768 y 1440 px, en noche y en día, sin desborde horizontal ni errores de consola (comprobado en producción con Playwright y el Chrome del sistema)
