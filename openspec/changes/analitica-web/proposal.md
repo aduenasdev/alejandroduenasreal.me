@@ -16,5 +16,6 @@ sin cookies ni banner de consentimiento.
 
 - Parámetros `utm_`: Web Analytics no guarda la consulta de la URL, así que no se usarían.
 - Un contador visible en la página, eventos propios y cualquier analítica con cookies.
-- Activar Web Analytics en Cloudflare: es configuración de la cuenta y se hace después de fusionar, con el sí de
-  Alejandro (si se activa antes, la CSP vieja bloquea el beacon y la consola muestra errores).
+- Cambiar Web Analytics en Cloudflare: el sitio `alejandroduenasreal.me` ya existe (20-nov) con inyección automática,
+  pero en modo «lite», que excluye a los visitantes de la UE. Quitar ese modo es configuración de la cuenta y se hace
+  después de fusionar, con el sí de Alejandro (si se hace antes, la CSP vieja bloquea el beacon y la consola da errores).
