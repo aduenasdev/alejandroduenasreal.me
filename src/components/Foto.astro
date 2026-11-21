@@ -38,10 +38,10 @@ const claseImg = 'size-full object-cover [object-position:50%_30%]';
       }
     </div>
     <figcaption
-      class="absolute inset-x-[7%] bottom-[5.5%] flex items-center justify-between gap-3 rounded-full bg-noche px-4 py-3 font-display text-[12.5px] sm:px-5 sm:text-[13.5px] font-semibold text-[#edefee]"
+      class="absolute inset-x-[7%] bottom-[5.5%] flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-[26px] bg-noche px-4 py-3 font-display text-[12.5px] sm:px-5 sm:text-[13.5px] font-semibold text-[#edefee]"
     >
       <span class="whitespace-nowrap">{perfil.ubicacion}</span>
-      <span class="flex items-center gap-2 text-senal"><span class="punto-vivo" aria-hidden="true"></span>Disponible</span>
+      <span class="flex items-center gap-2 whitespace-nowrap text-senal"><span class="punto-vivo" aria-hidden="true"></span>{perfil.estado}</span>
     </figcaption>
   </div>
 </figure>

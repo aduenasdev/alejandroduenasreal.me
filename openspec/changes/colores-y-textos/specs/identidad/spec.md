@@ -63,3 +63,11 @@ desplegado a mano» y «Sin ejecuciones todavía») y MUST NOT mostrar la insign
 #### Scenario: Despliegue a mano
 - **WHEN** se compila sin `PUBLIC_RUN_URL`
 - **THEN** la página no tiene ninguna imagen rota y no enlaza a `badge.svg`
+
+### Requirement: Disponibilidad y fechas como en el CV
+La píldora de la foto SHALL decir lo mismo que el estado de la portada («Abierto a conversaciones») y MUST NOT
+decir «Disponible». El capítulo de ingeniero independiente SHALL acabar en ene 2024, como en el CV.
+
+#### Scenario: Píldora y capítulo 2022
+- **WHEN** se abre `/`
+- **THEN** la página no contiene «Disponible», la píldora de la foto dice «Abierto a conversaciones» y el capítulo de 2022 dice «mar 2022 → ene 2024»

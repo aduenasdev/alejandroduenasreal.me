@@ -17,3 +17,4 @@
 
 - [x] 3.1 `astro check`, `npm run build`, `openspec validate --all --strict` y lychee en verde
 - [x] 3.2 Vista previa en Cloudflare Pages desde `feat/colores-y-textos`
+- [x] 3.3 Píldora de la foto con `perfil.estado` y capítulo 2022 hasta ene 2024; comprobar a 390, 768 y 1440 px que la píldora cabe
