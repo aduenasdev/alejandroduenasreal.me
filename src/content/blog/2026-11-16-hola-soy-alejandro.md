@@ -1,11 +1,11 @@
 ---
 titulo: Hola, soy Alejandro. Esto es lo que vas a encontrar aquí
 descripcion: Quién soy, qué busco, cómo leer esta web y las tres reglas con las que escribo una nota cada semana.
-fecha: 2026-11-23
+fecha: 2026-11-16
 slug: hola-soy-alejandro
 tipo: opinion
 etiquetas: [presentación, IA en producción, liderazgo, agentes]
-borrador: true
+borrador: false
 ---
 
 Durante tres años coordiné a 6 equipos que movían los billetes de más de 45 millones de viajeros al año. Aprendí que
