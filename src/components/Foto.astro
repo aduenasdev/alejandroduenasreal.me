@@ -1,0 +1,47 @@
+---
+// Tarjeta de la foto: papel, ventana redonda con doble anillo y pie en píldora.
+// Retrato opcional: retrato-noche.* y retrato-dia.* (según el tema) o retrato.* (los dos). Sin ninguno, el monograma.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Monograma from './Monograma.astro';
+import { perfil } from '../data/perfil';
+
+const imagenes = import.meta.glob<{ default: ImageMetadata }>('../assets/retrato*.{png,jpg,jpeg,webp,avif}', { eager: true });
+const busca = (nombre: string) =>
+  Object.entries(imagenes).find(([ruta]) => ruta.split('/').pop()?.replace(/\.\w+$/, '') === nombre)?.[1].default;
+const comun = busca('retrato');
+const noche = busca('retrato-noche') ?? comun;
+const dia = busca('retrato-dia') ?? comun;
+const alt = `Retrato ilustrado de ${perfil.nombre}`;
+const claseImg = 'size-full object-cover [object-position:50%_30%]';
+---
+
+<figure class="foto relative mx-auto w-full max-w-[420px]">
+  <div
+    class="relative aspect-[10/11] overflow-hidden rounded-[26px] bg-papel"
+    style="background-image: radial-gradient(120% 90% at 50% 15%, #d6f9e6 0%, #a9f1ca 55%, #8ee5b6 100%)"
+  >
+    <div
+      class="absolute left-1/2 top-[7%] aspect-square w-[76%] -translate-x-1/2 overflow-hidden rounded-full bg-[#effcf5] shadow-[0_0_0_6px_#b9ecd0,0_0_0_11px_#6fcf9c]"
+    >
+      {
+        noche && dia && noche === dia ? (
+          <Image src={noche} alt={alt} widths={[320, 640]} sizes="320px" class={claseImg} loading="eager" />
+        ) : noche && dia ? (
+          <>
+            <Image src={noche} alt={alt} widths={[320, 640]} sizes="320px" class={`${claseImg} dia:hidden`} loading="eager" />
+            <Image src={dia} alt={alt} widths={[320, 640]} sizes="320px" class={`${claseImg} hidden dia:block`} loading="eager" />
+          </>
+        ) : (
+          <Monograma class="size-full p-[6%]" />
+        )
+      }
+    </div>
+    <figcaption
+      class="absolute inset-x-[7%] bottom-[5.5%] flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-[26px] bg-noche px-4 py-3 font-display text-[12.5px] sm:px-5 sm:text-[13.5px] font-semibold text-[#edefee]"
+    >
+      <span class="whitespace-nowrap">{perfil.ubicacion}</span>
+      <span class="flex items-center gap-2 whitespace-nowrap text-senal"><span class="punto-vivo" aria-hidden="true"></span>{perfil.estado}</span>
+    </figcaption>
+  </div>
+</figure>

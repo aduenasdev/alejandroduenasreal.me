@@ -7,9 +7,8 @@ context: |
 
   ## El proyecto
   Web personal de Alejandro Dueñas Real (alejandroduenasreal.me): diseña y opera agentes de IA en
-  producción (LLMOps y plataforma). Astro 6 estático + Tailwind 4, sin backend. Portada en español en /,
-  blog bilingüe en src/content/blog/{es,en}/ con una entrada por semana ISO e idioma (el build falla si
-  hay dos). Todo el texto de la portada vive en src/data/perfil.ts. Página «Cómo se hace» en /como-se-hace/
+  producción (LLMOps y plataforma). Astro 6 estático + Tailwind 4, sin backend. Toda la web en español:
+  portada en / y blog en src/content/blog/ con una entrada por semana ISO (el build falla si hay dos). Todo el texto de la portada vive en src/data/perfil.ts. Página «Cómo se hace» en /como-se-hace/
   que enseña el circuito de especificación, CI y despliegue con datos reales.
   Diseño: composición basada en «Graphic Designer Portfolio Homepage» de Can Aydın (atribución obligatoria),
   rasgo propio de impresión risográfica (trama de puntos). Noche por defecto, modo día.
@@ -18,8 +17,9 @@ context: |
   ## Reglas de contenido
   - Solo hechos comprobables. No inventar logros, cifras, empleos, testimonios ni certificados.
     Lo pendiente se declara como pendiente.
-  - Del empleador actual, ni el nombre, ni sus productos, ni sus webs, ni capturas: solo texto genérico
-    del trabajo. De los clientes, solo FTChart puede nombrarse.
+  - Del empleador actual (Pangeanic) se dice el nombre, pero ni sus productos, ni sus webs, ni sus clientes,
+    ni capturas. De clientes y proyectos, solo FTChart y Vaquify pueden nombrarse.
+  - Cifras solo si también están en el CV de LinkedIn en español (incluido «6 equipos y más de 15 personas» en Viajando).
   - El puesto actual es el del CV y no se pone ciudad. Nunca teléfono, secretos ni datos de clientes.
 
   ## Git

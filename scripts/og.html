@@ -1,0 +1,79 @@
+<!doctype html>
+<!--
+  Plantilla de public/og.png (1200×630). Se genera con código, no con IA de imágenes:
+  chrome --headless=new --hide-scrollbars --window-size=1200,630 --screenshot=public/og.png scripts/og.html
+  Usa Google Fonts solo aquí (es una herramienta local, no se publica).
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&display=block" rel="stylesheet">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #1b1d1c; color: #edefee; font-family: 'Sora', sans-serif; }
+  .lienzo { position: relative; width: 1200px; height: 630px; padding: 54px 64px; }
+  .marca { display: flex; align-items: center; gap: 14px; font-weight: 600; font-size: 21px; letter-spacing: .06em; }
+  .marca svg { width: 40px; height: 40px; }
+  .pildora { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; border: 1.5px solid #343736; border-radius: 999px; padding: 9px 18px; font-size: 17px; font-weight: 600; color: #bcbdbc; }
+  .punto { width: 10px; height: 10px; border-radius: 50%; background: #3fcf8e; }
+  h1 { margin-top: 22px; font-size: 46px; font-weight: 600; line-height: 1.12; letter-spacing: -.015em; }
+  h1 em { font-style: normal; color: #3fcf8e; }
+  .foto { position: absolute; right: 64px; top: 54px; width: 300px; height: 330px; border-radius: 24px;
+    background: radial-gradient(120% 90% at 50% 15%, #d6f9e6 0%, #a9f1ca 55%, #8ee5b6 100%); }
+  .ventana { position: absolute; left: 50%; top: 22px; width: 228px; height: 228px; transform: translateX(-50%); border-radius: 50%;
+    background: #effcf5; box-shadow: 0 0 0 5px #b9ecd0, 0 0 0 9px #6fcf9c; overflow: hidden; }
+  .pie { position: absolute; left: 20px; right: 20px; bottom: 18px; display: flex; justify-content: space-between; align-items: center;
+    background: #1b1d1c; border-radius: 999px; padding: 10px 16px; font-size: 13px; font-weight: 600; }
+  .pie b { color: #3fcf8e; display: flex; align-items: center; gap: 7px; font-weight: 600; }
+  .cinta { position: absolute; left: -40px; width: 1300px; white-space: nowrap; font-size: 24px; font-weight: 600; padding: 13px 0; }
+  .uno { top: 478px; background: #edefee; color: #1b1d1c; transform: rotate(-2.6deg); }
+  .dos { top: 520px; background: #3fcf8e; color: #1b1d1c; transform: rotate(1.8deg); }
+  .cinta span { margin: 0 14px; }
+  .uno i { color: #3fcf8e; font-style: normal; }
+  .dos i { font-style: normal; }
+</style>
+</head>
+<body>
+<div class="lienzo">
+  <div class="marca">
+    <svg viewBox="0 0 64 64"><rect x="1" y="1" width="62" height="62" rx="14" fill="#1b1d1c" stroke="#343736" stroke-width="2"/>
+  <g transform="translate(2 0)">
+    <g fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 45 L18.5 18 L28 45" stroke="#edefee"/>
+      <path d="M13 34 H35" stroke="#3fcf8e"/>
+      <path d="M35 18 V46 H40 A14 14 0 0 0 40 18 Z" stroke="#3fcf8e"/>
+    </g>
+    <g fill="#1b1d1c" stroke-width="3">
+      <circle cx="9" cy="45" r="3.6" stroke="#edefee"/>
+      <circle cx="28" cy="45" r="3.6" stroke="#edefee"/>
+      <circle cx="13" cy="34" r="3.2" stroke="#3fcf8e"/>
+    </g>
+  </g></svg>
+    Alejandro Dueñas
+  </div>
+  <div class="pildora"><span class="punto"></span>Abierto a conversaciones · LLMOps y plataforma</div>
+  <h1>Hola, soy <em>Alejandro.</em><br>Diseño cómo se trabaja<br>con agentes de IA y llevo lo<br>que se construye a producción.</h1>
+
+  <div class="foto">
+    <div class="ventana">
+      <svg viewBox="0 0 200 200" width="228" height="228">
+        <defs>
+          <pattern id="am" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(15)"><circle cx="3.5" cy="3.5" r="2.6" fill="#3fcf8e"/></pattern>
+          <pattern id="az" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><circle cx="2.5" cy="2.5" r="2.15" fill="#0e7e4e"/></pattern>
+        </defs>
+        <circle cx="100" cy="100" r="92" fill="url(#am)"/>
+        <g fill="none" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" transform="translate(2 1.5)">
+          <path d="M38 138 L67 62 L96 138 M50 112 H84" stroke="url(#az)"/>
+          <path d="M114 62 V138 H125 A38 38 0 0 0 125 62 Z" stroke="url(#az)"/>
+        </g>
+      </svg>
+    </div>
+    <div class="pie"><span>Remoto o híbrido</span><b><span class="punto"></span>Abierto</b></div>
+  </div>
+
+  <div class="cinta uno"><span>Agentes en producción</span><i>◆</i><span>LLMOps</span><i>◆</i><span>Evaluación</span><i>◆</i><span>Observabilidad</span><i>◆</i><span>Guardrails</span><i>◆</i><span>Coste por petición</span><i>◆</i><span>MCP</span></div>
+  <div class="cinta dos"><span>AWS Bedrock</span><i>◆</i><span>Azure OpenAI</span><i>◆</i><span>Vertex AI</span><i>◆</i><span>Kubernetes</span><i>◆</i><span>Terraform</span><i>◆</i><span>Docker</span><i>◆</i><span>CI/CD</span></div>
+</div>
+</body>
+</html>

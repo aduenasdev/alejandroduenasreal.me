@@ -1,0 +1,11 @@
+---
+import EntradaBlog from '../../components/EntradaBlog.astro';
+import { publicadas, type Entrada } from '../../blog';
+
+export async function getStaticPaths() {
+  return (await publicadas()).map((entrada) => ({ params: { slug: entrada.data.slug }, props: { entrada } }));
+}
+const { entrada } = Astro.props as { entrada: Entrada };
+---
+
+<EntradaBlog entrada={entrada} />

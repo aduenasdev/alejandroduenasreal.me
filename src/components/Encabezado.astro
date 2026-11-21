@@ -1,0 +1,21 @@
+---
+// Encabezado de sección: etiqueta + H2 a la izquierda; texto a la derecha (en columna en móvil).
+interface Props {
+  etiqueta: string;
+  /** Líneas del H2: cada una en su línea. */
+  lineas: string[];
+  texto?: string;
+  id?: string;
+}
+const { etiqueta, lineas, texto, id } = Astro.props;
+---
+
+<div class="encabezado flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-12">
+  <div class="md:shrink-0">
+    <p class="etiqueta">{etiqueta}</p>
+    <h2 class="titulo-seccion" id={id}>
+      {lineas.map((l, i) => (i < lineas.length - 1 ? <>{l}<br />{' '}</> : l))}
+    </h2>
+  </div>
+  {texto && <p class="max-w-[46ch] text-tinta-2 md:text-right">{texto}</p>}
+</div>
