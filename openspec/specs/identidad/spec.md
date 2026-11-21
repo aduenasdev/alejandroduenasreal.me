@@ -81,3 +81,11 @@ de Arquitecto de IA o Tech Lead»). MUST NOT aparecer «Developer Machine Learni
 #### Scenario: Puesto y búsqueda
 - **WHEN** se abre `/`
 - **THEN** el capítulo de 2026 dice «Machine Learning Developer», el último bloque de la trayectoria dice «Arquitecto de IA o Tech Lead» y la página no contiene «Developer Machine Learning» ni «Lidero equipos»
+
+### Requirement: Imagen para compartir con versión
+La URL de `og:image` y la `image` del JSON-LD SHALL llevar una versión que dependa del contenido de `public/og.png`,
+para que las redes vuelvan a descargarla cuando cambie. Con la misma imagen, la URL MUST ser la misma en cada build.
+
+#### Scenario: Versión por contenido
+- **WHEN** se compila la web
+- **THEN** `og:image` es `https://alejandroduenasreal.me/og.png?v=` seguido de los 8 primeros caracteres hexadecimales del SHA-256 de `public/og.png`, y la `image` del JSON-LD es la misma URL
