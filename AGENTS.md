@@ -35,8 +35,8 @@ Las specs vigentes están en `openspec/specs/` (`openspec list --specs`). Antes 
   dice como pendiente.
 - **Empleador actual:** se nombra (Pangeanic), pero ni sus productos, ni sus webs, ni sus clientes, ni capturas; el
   trabajo, con texto genérico.
-- **Cifras:** solo las que también estén en el CV de LinkedIn en español («más de 10 años», 45 M de pasajeros al año).
-  El número de equipos liderados solo va en la nota del blog. El CV no se descarga desde la web: el contacto es el correo.
+- **Cifras:** solo las que también estén en el CV de LinkedIn en español («más de 10 años», 45 M de pasajeros al año,
+  «6 equipos y más de 15 personas» en Viajando). El CV no se descarga desde la web: el contacto es el correo.
 - **Clientes y proyectos:** solo **FTChart** (`https://ftchart.com/`) y **Vaquify** (`https://vaquify.com/`) pueden nombrarse y enlazarse.
 - **Puesto:** el actual es el del CV; no se inventan puestos. Ubicación: «España · remoto o híbrido», nunca una ciudad.
 - **Nunca:** teléfono, dirección, secretos ni datos de clientes. Sin capturas de productos de terceros.

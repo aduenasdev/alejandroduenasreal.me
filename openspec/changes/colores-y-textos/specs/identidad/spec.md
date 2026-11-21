@@ -25,11 +25,11 @@ CV para descargar ni un botón que imprima la página.
 ### Requirement: Empleador y cifras como en el CV
 La web SHALL nombrar a Pangeanic en los puestos desde marzo de 2024 y MUST NOT nombrar sus productos, webs ni
 clientes. Las cifras de la portada MUST coincidir con el CV de LinkedIn en español («más de 10 años», 45 M de
-pasajeros al año); el número de equipos liderados solo aparece en la nota del blog.
+pasajeros al año, «6 equipos y más de 15 personas» en Viajando).
 
 #### Scenario: Cifras
-- **WHEN** se busca «12 años» o «6 equipos» en `src/data/perfil.ts`
-- **THEN** no aparece
+- **WHEN** se abre `/`
+- **THEN** no aparece «12 años», y el capítulo de Team Leader, la tarjeta de Viajando y la respuesta «¿Ha liderado equipos?» dicen «6 equipos y más de 15 personas»
 
 ### Requirement: Titular de liderazgo
 El H1 de la portada SHALL ser «Hola, soy Alejandro. Lidero equipos que desarrollan con agentes de IA y llevo lo que
