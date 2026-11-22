@@ -89,3 +89,11 @@ para que las redes vuelvan a descargarla cuando cambie. Con la misma imagen, la 
 #### Scenario: Versión por contenido
 - **WHEN** se compila la web
 - **THEN** `og:image` es `https://alejandroduenasreal.me/og.png?v=` seguido de los 8 primeros caracteres hexadecimales del SHA-256 de `public/og.png`, y la `image` del JSON-LD es la misma URL
+
+### Requirement: Iconos para los buscadores
+Todas las páginas SHALL declarar el icono «AD» en ICO (con 48 px), en SVG y en PNG cuadrado de 192 px. `/favicon.ico`
+MUST responder 200, para los rastreadores que lo buscan ahí por defecto.
+
+#### Scenario: Iconos declarados y servidos
+- **WHEN** se abre `/`
+- **THEN** el `<head>` lleva `rel="icon"` hacia `/favicon.ico`, `/favicon.svg` y `/favicon-192.png`, y las tres URL responden 200
