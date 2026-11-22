@@ -9,7 +9,7 @@ y se referencia con una ruta relativa en `portada`. Sin portada, la tarjeta mues
 ---
 titulo: …                     # ≤ 90 caracteres
 descripcion: …                # ≤ 160 caracteres
-fecha: 2026-12-07             # el lunes de la semana en que se publica
+fecha: 2026-12-07             # el día en que se publica
 slug: …                       # la URL /blog/<slug>/: [a-z0-9-], sin repetir
 tipo: guia                    # guia | opinion | analisis | caso
 serie: Agentes en producción  # opcional
@@ -22,8 +22,8 @@ borrador: true                # se publica al pasarlo a false (o quitarlo)
 
 ## Reglas
 
-1. **Una nota por semana ISO.** El build falla si dos notas publicadas caen en la misma semana. Si una semana se cae,
-   no se publican dos de golpe.
+1. **Al menos una nota por semana, sin tope.** Si hay dos listas, se publican las dos. El build solo falla si dos notas
+   comparten `slug`.
 2. **Cifras con fuente.** Cada nota lleva al menos una cifra con su fuente enlazada y un diagrama o una tabla. Lo que no
    se puede medir se dice como opinión.
 3. **Nada de datos de clientes ni de empresas** (ver las reglas de contenido en `AGENTS.md`).

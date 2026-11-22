@@ -9,7 +9,7 @@ export const textos = {
   notas: 'Notas',
   tituloBlog: 'Notas de ingeniería',
   descripcionBlog:
-    'Una nota por semana sobre IA en producción, agentes de código y cómo trabajar con ellos sin perder el control.',
+    'Al menos una nota por semana sobre IA en producción, agentes de código y cómo trabajar con ellos sin perder el control.',
   publicado: 'Publicado el',
   minutos: 'min de lectura',
   leer: 'Leer nota →',

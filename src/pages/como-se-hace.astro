@@ -42,7 +42,7 @@ const pasos = [
 
 const comprobaciones = [
   { que: 'Tipos', evita: 'errores de TypeScript y props mal pasadas', con: 'astro check' },
-  { que: 'Build', evita: 'páginas rotas, esquemas del blog inválidos y dos notas la misma semana', con: 'astro build + regla del blog' },
+  { que: 'Build', evita: 'páginas rotas, esquemas del blog inválidos y slugs repetidos', con: 'astro build + regla del blog' },
   { que: 'Especificaciones', evita: 'cambios sin spec o con specs mal formadas', con: 'openspec validate --strict' },
   { que: 'Enlaces', evita: 'enlaces internos rotos', con: 'lychee' },
 ];
@@ -65,7 +65,7 @@ const nota = [
   { paso: 'Idea', hace: 'Tipo (Guía, Opinión, Análisis o Caso), tesis y fuentes.', sale: 'una propuesta' },
   { paso: 'Propuesta', hace: 'Un cambio de OpenSpec con la estructura y las fuentes.', sale: 'el alcance aprobado' },
   { paso: 'Redacción y verificación', hace: 'Cada cifra con su fuente y cada comando probado.', sale: 'la nota terminada' },
-  { paso: 'Publicación', hace: 'Merge en una semana libre (una nota por semana).', sale: 'la nota publicada' },
+  { paso: 'Publicación', hace: 'Merge en otra sesión, cuando la nota está lista.', sale: 'la nota publicada' },
 ];
 ---
 
@@ -275,7 +275,7 @@ const nota = [
       }
     </ol>
     <ul class="mt-6 flex flex-col gap-2 rounded-[18px] border-[1.5px] border-dashed border-borde px-6 py-5 text-[16px] md:flex-row md:flex-wrap md:gap-x-8">
-      <li>◆ Una nota por semana.</li>
+      <li>◆ Al menos una nota por semana.</li>
       <li>◆ Cifras con fuente.</li>
       <li>◆ Nada de datos de clientes ni de empresas.</li>
       <li>◆ Sin mi merge, no se publica.</li>

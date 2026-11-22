@@ -50,7 +50,7 @@ cualquier sistema de IA que construyo: **si no hay fuente, no hay respuesta**.
 
 ## Qué vas a encontrar cada semana
 
-Una nota por semana, en español, sobre IA en producción, agentes de código y cómo se organiza un equipo para
+Al menos una nota por semana, en español, sobre IA en producción, agentes de código y cómo se organiza un equipo para
 trabajar con ellos sin perder el control. Algunas de las próximas:
 
 - Lo que aprendí liderando la plataforma de billetes de un país.
@@ -61,8 +61,7 @@ trabajar con ellos sin perder el control. Algunas de las próximas:
 
 ## Las tres reglas con las que escribo
 
-1. **Una nota por semana.** Ni más ni menos. Si una semana se cae, no publico dos de golpe. La propia web impide
-   publicar dos en la misma semana.
+1. **Al menos una nota por semana.** Si hay más que contar, publico más.
 2. **Cifras con fuente.** Lo que se puede medir lleva de dónde sale. Lo que no, lo digo como opinión.
 3. **Nada de datos de clientes ni de empresas.** Hablo de cómo trabajo y de lo que he aprendido, no de lo que no es mío.
 
