@@ -27,7 +27,10 @@ context: |
   - main protegida; una rama corta y un PR por cambio: feat/<change-id>, fix/<change-id>, chore/<change-id>.
   - Commits convencionales: <tipo>(<ámbito>): <descripción en español>, con el trailer
     OpenSpec-Change: <change-id>.
-  - Los agentes nunca fusionan: revisa y fusiona Alejandro, con rebase o merge commit (no squash).
+  - Los agentes nunca fusionan: revisa y fusiona Alejandro, con rebase o merge commit (no squash), en otra sesión,
+    nunca en la misma en que se abre el PR. Solo un arreglo urgente de producción, con «urgente» en el título, puede
+    fusionarse en la misma sesión.
+  - El cambio se archiva en el mismo PR: el último commit es `openspec archive <id> --yes`. No hay PR aparte para archivar.
   - La aprobación de publicar es el merge del PR: queda registrada en GitHub.
 
 rules:

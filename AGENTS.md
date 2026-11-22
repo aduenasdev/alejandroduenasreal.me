@@ -23,8 +23,12 @@ Audiencia: reclutadores y responsables técnicos de equipos de IA y plataforma.
 5. **PR a `main`.** El título se lee en las notas de la release: escríbelo para eso. La CI comenta la URL de la vista
    previa.
 6. **Los agentes nunca fusionan, nunca fuerzan un push y nunca borran ramas ni repositorios.** Revisa y fusiona
-   Alejandro (rebase o merge commit, nunca squash). Su merge es la aprobación de publicar.
-7. Tras el merge: `openspec archive <id>` en un PR pequeño, para que las specs pasen a `openspec/specs/`.
+   Alejandro (rebase o merge commit, nunca squash), **en otra sesión, nunca en la misma en que se abre el PR**: mira
+   la vista previa y el diff con la cabeza fría. Su merge es la aprobación de publicar. Solo un arreglo urgente de
+   producción, con «urgente» en el título, puede fusionarse en la misma sesión.
+7. **El archivo de OpenSpec va en el mismo PR.** El último commit antes de abrirlo es
+   `npx -y @fission-ai/openspec@2.1.1 archive <id> --yes`, y las specs pasan a `openspec/specs/` al fusionar. Si la
+   revisión pide cambios, se corrigen también las specs archivadas. No hay PR aparte para archivar.
 
 Las specs vigentes están en `openspec/specs/` (`openspec list --specs`). Antes de cambiar un comportamiento, léelas.
 
