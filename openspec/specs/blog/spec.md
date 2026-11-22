@@ -13,17 +13,6 @@ El blog SHALL publicarse solo en español: `lang="es"`, textos de la interfaz en
 - **WHEN** se abre `/blog/<slug>/`
 - **THEN** la página lleva `lang="es"`, `inLanguage: "es"` en su JSON-LD y no existe ninguna ruta `/en/`
 
-### Requirement: Una nota por semana
-El build MUST fallar si dos notas publicadas caen en la misma semana ISO o si dos notas comparten `slug`.
-
-#### Scenario: Dos notas la misma semana
-- **WHEN** hay dos notas publicadas con fechas 2026-12-07 y 2026-12-09
-- **THEN** `npm run build` falla con el mensaje de la regla, que nombra las dos notas y la semana
-
-#### Scenario: Slug repetido
-- **WHEN** dos notas publicadas tienen el mismo `slug`
-- **THEN** `npm run build` falla diciendo qué slug está repetido
-
 ### Requirement: Borradores
 `borrador: true` MUST dejar la nota fuera de las páginas, el RSS y el sitemap. Los ficheros que empiezan por `_` no
 se publican.
@@ -69,3 +58,14 @@ Cada nota SHALL llevar `BlogPosting` con título, descripción, fecha, idioma, a
 #### Scenario: Validar el JSON-LD de una nota
 - **WHEN** se lee el JSON-LD de una nota
 - **THEN** es de tipo `BlogPosting` con `headline`, `description`, `datePublished`, `inLanguage`, `author` y `url`
+
+### Requirement: Slugs únicos
+El build MUST fallar si dos notas publicadas comparten `slug`. Varias notas MAY publicarse en la misma semana ISO.
+
+#### Scenario: Slug repetido
+- **WHEN** dos notas publicadas tienen el mismo `slug`
+- **THEN** `npm run build` falla diciendo qué slug está repetido
+
+#### Scenario: Dos notas la misma semana
+- **WHEN** hay dos notas publicadas con fechas 2026-12-07 y 2026-12-09 y slugs distintos
+- **THEN** `npm run build` termina bien y publica las dos
