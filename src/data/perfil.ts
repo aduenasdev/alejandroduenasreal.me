@@ -69,7 +69,7 @@ export const capitulos: { ano: string; fecha: string; puesto: string; donde: str
 ];
 export const proximoCapitulo = {
   puesto: 'Las tres capas, a la vez',
-  texto: 'Lo que busco: un rol de Arquitecto de IA o Tech Lead, para diseñar y operar agentes en producción y la plataforma que los sostiene, con un equipo.',
+  texto: 'Diseñar y operar agentes de IA en producción, y la plataforma que los sostiene, al frente de un equipo.',
   capas: ['producto', 'liderazgo', 'ia'] as Capa[],
 };
 
