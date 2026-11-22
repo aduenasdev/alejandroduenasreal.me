@@ -36,7 +36,7 @@ const pasos = [
   {
     nombre: 'Publicar',
     agente: 'Nunca fusiona.',
-    yo: 'Mi merge es la aprobación y queda registrado en GitHub; el despliegue es automático.',
+    yo: 'Fusiono en otra sesión, nunca en la que se abrió el PR. Mi merge es la aprobación y queda registrado en GitHub; el despliegue es automático.',
   },
 ];
 
@@ -209,6 +209,8 @@ const nota = [
       <a href={`${repo}/blob/main/scripts/metricas.py`} class="underline decoration-senal underline-offset-4 dia:decoration-enlace">scripts/metricas.py</a>,
       y cualquiera puede contrastarlas con{' '}
       <a href={`${repo}/pulls?q=is%3Apr+is%3Amerged`} class="underline decoration-senal underline-offset-4 dia:decoration-enlace">los PR fusionados</a>.
+      Ya no fusiono un PR en la misma sesión en que se abre; los de antes, que entraron en minutos, pesan en la mediana
+      hasta que salgan de la ventana de 90 días.
     </p>
   </section>
 
