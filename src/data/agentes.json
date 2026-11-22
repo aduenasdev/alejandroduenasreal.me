@@ -1,0 +1,52 @@
+{
+  "desde": "2026-08-24T20:24:16.711322+00:00",
+  "hasta": "2026-11-22T20:24:16.711322+00:00",
+  "regla": "todas",
+  "total_fusionados": 16,
+  "porcentaje_de_agente": 100.0,
+  "bots_excluidos": 2,
+  "agentes": {
+    "con_especificacion": 16,
+    "porcentaje_con_especificacion": 100.0,
+    "con_nivel_de_especificacion": 0,
+    "porcentaje_con_nivel_de_especificacion": 0.0,
+    "niveles_de_especificacion": {},
+    "fusionados": 16,
+    "cerrados_sin_fusionar": 0,
+    "revisados": 0,
+    "aceptados_a_la_primera": 0,
+    "porcentaje_a_la_primera": null,
+    "commits_tras_abrir_mediana": 1.0,
+    "horas_hasta_primera_revision_mediana": null,
+    "horas_hasta_fusionar_mediana": 0.7,
+    "con_pruebas": 0,
+    "porcentaje_con_pruebas": 0.0,
+    "lineas_de_prueba_mediana": 0.0,
+    "revertidos": 0,
+    "porcentaje_revertidos": 0.0
+  },
+  "personas": {
+    "con_especificacion": 0,
+    "porcentaje_con_especificacion": null,
+    "con_nivel_de_especificacion": 0,
+    "porcentaje_con_nivel_de_especificacion": null,
+    "niveles_de_especificacion": {},
+    "fusionados": 0,
+    "cerrados_sin_fusionar": 0,
+    "revisados": 0,
+    "aceptados_a_la_primera": 0,
+    "porcentaje_a_la_primera": null,
+    "commits_tras_abrir_mediana": null,
+    "horas_hasta_primera_revision_mediana": null,
+    "horas_hasta_fusionar_mediana": null,
+    "con_pruebas": 0,
+    "porcentaje_con_pruebas": null,
+    "lineas_de_prueba_mediana": null,
+    "revertidos": 0,
+    "porcentaje_revertidos": null
+  },
+  "avisos": [
+    "Ningún PR de agente tiene revisiones formales en GitHub (Aprobar o Pedir cambios), así que «aceptados a la primera» no se puede medir. Mira «commits tras abrir» como señal de correcciones."
+  ],
+  "repo": "aduenasdev/alejandroduenasreal.me"
+}
