@@ -1,6 +1,6 @@
 ---
 titulo: Hola, soy Alejandro. Esto es lo que vas a encontrar aquí
-descripcion: Quién soy, qué busco, cómo leer esta web y las tres reglas con las que escribo una nota cada semana.
+descripcion: Quién soy, hacia dónde voy, cómo leer esta web y las tres reglas con las que escribo una nota cada semana.
 fecha: 2026-11-16
 slug: hola-soy-alejandro
 tipo: opinion
@@ -23,11 +23,11 @@ Después trabajé como independiente para clientes de Estados Unidos, México y 
 **FTChart**, IA clínica para médicos cuyas respuestas citan la página del historial de la que salen. Desde 2024 llevo
 **modelos de lenguaje y agentes a producción**.
 
-## Qué busco
+## Hacia dónde voy
 
-Un rol de **Arquitecto de IA o Tech Lead** donde **diseñar y operar agentes de IA en producción** y la plataforma que los sostiene: despliegue,
-observabilidad, evaluación, guardrails y coste. Y hacerlo con un equipo, que es donde junto las tres capas de mi
-trayectoria: producto, liderazgo e IA.
+**Diseñar y operar agentes de IA en producción** y la plataforma que los sostiene: despliegue, observabilidad,
+evaluación, guardrails y coste. Y hacerlo al frente de un equipo, que es donde junto las tres capas de mi trayectoria:
+producto, liderazgo e IA.
 
 ## Cómo leer la web
 
