@@ -29,6 +29,13 @@ jobs:
           node-version-file: .node-version
           cache: npm
       - run: npm ci
+      # Las cifras de «Cómo se hace» (sección «Medido»). Si la API falla, se publica la última foto guardada.
+      - name: Cifras del trabajo con agentes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          python3 scripts/metricas.py --repo "$GITHUB_REPOSITORY" --dias 90 --regla todas --salida src/data/agentes.json
+          || echo "::warning::No se pudieron calcular las cifras; se publica la última foto de src/data/agentes.json"
       - name: Tipos (astro check)
         run: npx astro check
       - name: Build
