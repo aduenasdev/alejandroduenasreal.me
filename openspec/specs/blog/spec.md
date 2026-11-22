@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Un blog en español e indexable, con una nota por semana, pensado para reclutadores y responsables técnicos.
+Un blog en español e indexable, con al menos una nota por semana y sin tope, pensado para reclutadores y responsables técnicos.
 
 ## Requirements
 

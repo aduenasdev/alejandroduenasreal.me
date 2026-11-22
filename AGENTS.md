@@ -57,7 +57,7 @@ Las specs vigentes están en `openspec/specs/` (`openspec list --specs`). Antes 
 | `src/components/` | Componentes de la portada, del blog y del circuito |
 | `src/pages/` | Rutas: portada, 404, «Cómo se hace», blog, RSS y sitemap |
 | `src/content/blog/` | Notas en Markdown, en español (plantilla en `docs/blog/PLANTILLA.md`) |
-| `src/content.config.ts` · `src/blog.ts` | Esquema del blog y sus reglas (una nota por semana ISO) |
+| `src/content.config.ts` · `src/blog.ts` | Esquema del blog y sus reglas (slugs únicos) |
 | `src/i18n.ts` | Textos de la interfaz del blog |
 | `src/assets/` | Retratos opcionales y portadas de las notas |
 | `public/` | Icono, `og.png`, `robots.txt` y `_headers` (cabeceras de Cloudflare Pages) |
