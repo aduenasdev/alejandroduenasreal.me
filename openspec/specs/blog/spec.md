@@ -69,3 +69,14 @@ El build MUST fallar si dos notas publicadas comparten `slug`. Varias notas MAY 
 #### Scenario: Dos notas la misma semana
 - **WHEN** hay dos notas publicadas con fechas 2026-12-07 y 2026-12-09 y slugs distintos
 - **THEN** `npm run build` termina bien y publica las dos
+
+### Requirement: Ruta /notas
+El sitio SHALL redirigir con 301 `/notas` y `/notas/` a `/blog/`, y no SHALL redirigir ninguna otra ruta bajo `/notas/`.
+
+#### Scenario: Alguien escribe /notas
+- **WHEN** se pide `https://alejandroduenasreal.me/notas` o `https://alejandroduenasreal.me/notas/`
+- **THEN** la respuesta es un 301 con `Location: /blog/`, y `/blog/` responde 200
+
+#### Scenario: Una nota que no existe bajo /notas
+- **WHEN** se pide `https://alejandroduenasreal.me/notas/cualquier-cosa`
+- **THEN** la respuesta es la página 404
