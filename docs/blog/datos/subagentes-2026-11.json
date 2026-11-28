@@ -1,0 +1,362 @@
+[
+ {
+  "tipo": "general-purpose",
+  "modelo": "?",
+  "fecha": "2026-10-29",
+  "peak": 81316,
+  "total": 1081268,
+  "herr": 16,
+  "inf_tok": 912
+ },
+ {
+  "tipo": "Explore",
+  "modelo": "?",
+  "fecha": "2026-11-01",
+  "peak": 145812,
+  "total": 1369416,
+  "herr": 33,
+  "inf_tok": 3114
+ },
+ {
+  "tipo": "Explore",
+  "modelo": "?",
+  "fecha": "2026-11-01",
+  "peak": 223701,
+  "total": 3379557,
+  "herr": 34,
+  "inf_tok": 4178
+ },
+ {
+  "tipo": "general-purpose",
+  "modelo": "?",
+  "fecha": "2026-11-18",
+  "peak": 80030,
+  "total": 1362100,
+  "herr": 20,
+  "inf_tok": 1114
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-20",
+  "peak": 11941,
+  "total": 16057,
+  "herr": 1,
+  "inf_tok": 539
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-20",
+  "peak": 15236,
+  "total": 29533,
+  "herr": 3,
+  "inf_tok": 677
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-20",
+  "peak": 16403,
+  "total": 20745,
+  "herr": 2,
+  "inf_tok": 601
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-20",
+  "peak": 19439,
+  "total": 23790,
+  "herr": 2,
+  "inf_tok": 679
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-20",
+  "peak": 99426,
+  "total": 180344,
+  "herr": 7,
+  "inf_tok": 2370
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-21",
+  "peak": 118502,
+  "total": 337534,
+  "herr": 13,
+  "inf_tok": 1196
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 40391,
+  "total": 45760,
+  "herr": 4,
+  "inf_tok": 592
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 55989,
+  "total": 85635,
+  "herr": 5,
+  "inf_tok": 1784
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 80166,
+  "total": 188924,
+  "herr": 5,
+  "inf_tok": 2589
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 82078,
+  "total": 280966,
+  "herr": 4,
+  "inf_tok": 784
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 101240,
+  "total": 270378,
+  "herr": 5,
+  "inf_tok": 2553
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 108960,
+  "total": 434270,
+  "herr": 5,
+  "inf_tok": 2117
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 119380,
+  "total": 360289,
+  "herr": 6,
+  "inf_tok": 2209
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 130012,
+  "total": 481063,
+  "herr": 7,
+  "inf_tok": 1054
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 140964,
+  "total": 263265,
+  "herr": 11,
+  "inf_tok": 1883
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 145868,
+  "total": 285648,
+  "herr": 7,
+  "inf_tok": 1554
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 170527,
+  "total": 789988,
+  "herr": 9,
+  "inf_tok": 1995
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-22",
+  "peak": 216270,
+  "total": 1004174,
+  "herr": 11,
+  "inf_tok": 2318
+ },
+ {
+  "tipo": "general-purpose",
+  "modelo": "claude-opus-5-5",
+  "fecha": "2026-11-25",
+  "peak": 143637,
+  "total": 2672717,
+  "herr": 25,
+  "inf_tok": 2490
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-25",
+  "peak": 10348,
+  "total": 15018,
+  "herr": 2,
+  "inf_tok": 501
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-25",
+  "peak": 276761,
+  "total": 516673,
+  "herr": 16,
+  "inf_tok": 1626
+ },
+ {
+  "tipo": "fork",
+  "modelo": "inherit",
+  "fecha": "2026-11-27",
+  "peak": 437881,
+  "total": 18698840,
+  "herr": 68,
+  "inf_tok": 1157
+ },
+ {
+  "tipo": "fork",
+  "modelo": "inherit",
+  "fecha": "2026-11-27",
+  "peak": 484895,
+  "total": 22101747,
+  "herr": 81,
+  "inf_tok": 223
+ },
+ {
+  "tipo": "fork",
+  "modelo": "inherit",
+  "fecha": "2026-11-27",
+  "peak": 489115,
+  "total": 48549154,
+  "herr": 173,
+  "inf_tok": 1130
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-27",
+  "peak": 30487,
+  "total": 46039,
+  "herr": 6,
+  "inf_tok": 909
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-27",
+  "peak": 32884,
+  "total": 63074,
+  "herr": 2,
+  "inf_tok": 940
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-27",
+  "peak": 44249,
+  "total": 141999,
+  "herr": 4,
+  "inf_tok": 636
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-27",
+  "peak": 140032,
+  "total": 450864,
+  "herr": 11,
+  "inf_tok": 1918
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-27",
+  "peak": 193735,
+  "total": 545572,
+  "herr": 10,
+  "inf_tok": 3130
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-27",
+  "peak": 227215,
+  "total": 821179,
+  "herr": 11,
+  "inf_tok": 2982
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-27",
+  "peak": 229835,
+  "total": 1081530,
+  "herr": 11,
+  "inf_tok": 2338
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-27",
+  "peak": 235159,
+  "total": 686696,
+  "herr": 12,
+  "inf_tok": 3376
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-27",
+  "peak": 270648,
+  "total": 1083868,
+  "herr": 13,
+  "inf_tok": 2442
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-27",
+  "peak": 340644,
+  "total": 832181,
+  "herr": 20,
+  "inf_tok": 2194
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-27",
+  "peak": 487180,
+  "total": 2278838,
+  "herr": 36,
+  "inf_tok": 1478
+ },
+ {
+  "tipo": "web-fetch",
+  "modelo": "claude-haiku-5-5",
+  "fecha": "2026-11-28",
+  "peak": 31060,
+  "total": 35606,
+  "herr": 2,
+  "inf_tok": 2975
+ }
+]
